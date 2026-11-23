@@ -32,15 +32,15 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="author" content="Rak-Kyeong Seong">
-        <title>Explainable AI for Brane Tilings — Rak-Kyeong Seong Research Group</title>
-        <meta name="description" content="Companion to arXiv:2609.21867: an interactive brane tiling of C^3/(Z_3 x Z_3) with its toric diagram, quiver and CNN saliency map, and the paper's results in full.">
+        <title>Explainable AI for Brane Tilings — Research Explorer — Rak-Kyeong Seong Research Group</title>
+        <meta name="description" content="Companion to arXiv:2609.21867: an interactive brane tiling of C^3/(Z_3 x Z_3) with its toric diagram, quiver and CNN saliency map.">
         <link rel="canonical" href="https://rakkyeongseong.github.io/xai/">
         <link rel="icon" href="favicon.png" type="image/png" sizes="192x192">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <meta property="og:type" content="website">
         <meta property="og:site_name" content="Rak-Kyeong Seong Research Group">
         <meta property="og:title" content="Explainable AI for Brane Tilings — Rak-Kyeong Seong Research Group">
-        <meta property="og:description" content="Companion to arXiv:2609.21867: an interactive brane tiling of C^3/(Z_3 x Z_3) with its toric diagram, quiver and CNN saliency map, and the paper's results in full.">
+        <meta property="og:description" content="Companion to arXiv:2609.21867: an interactive brane tiling of C^3/(Z_3 x Z_3) with its toric diagram, quiver and CNN saliency map.">
         <meta property="og:url" content="https://rakkyeongseong.github.io/xai/">
         <meta property="og:image" content="https://rakkyeongseong.github.io/xai/preview.jpg">
         <meta property="og:locale" content="en_GB">
@@ -74,7 +74,7 @@
               "@id": "https://rakkyeongseong.github.io/xai/",
               "url": "https://rakkyeongseong.github.io/xai/",
               "name": "Explainable AI for Brane Tilings",
-              "description": "Companion to arXiv:2609.21867: an interactive brane tiling of C^3/(Z_3 x Z_3) with its toric diagram, quiver and CNN saliency map, and the paper's results in full.",
+              "description": "Companion to arXiv:2609.21867: an interactive brane tiling of C^3/(Z_3 x Z_3) with its toric diagram, quiver and CNN saliency map.",
               "isPartOf": {
                 "@id": "https://rakkyeongseong.github.io/#website"
               },
@@ -134,9 +134,9 @@
         <link href="style.css" rel="stylesheet">
         <!-- Site design layer (typography, buttons, archive lists, cards) -->
         <link href="site.css" rel="stylesheet">
-        <!-- Demo layer (the four interactive panels and the results sections) -->
+        <!-- Demo layer (the reference under the hero and the four interactive panels) -->
         <link href="demo.css" rel="stylesheet">
-        <noscript><style>[data-results-host] > .r-status, #model-status { display: none; }</style></noscript>
+        <noscript><style>#model-status { display: none; }</style></noscript>
     </head>
     <body>
         <a class="skip-link" href="#main">Skip to content</a>
@@ -174,39 +174,32 @@
         </nav>
         <header class="hero page-hero">
             <div class="wrap">
-                <p class="u-kicker u-kicker--light">Interactive Research Resource and Summary</p>
-                <h1 class="hero-title">Research Explorer</h1>
+                <p class="u-kicker u-kicker--light">Research Explorer</p>
+                <h1 class="hero-title">Explainable AI for Brane Tilings</h1>
             </div>
         </header>
         <main id="main">
-        <noscript><div class="wrap"><p class="r-status r-status--noscript">The laboratory, the tables and the charts on this page are drawn with JavaScript, which is turned off; the numbers in the text are complete without it.</p></div></noscript>
-        <section class="section section--tight section--tint">
+        <!-- the paper, right below the title, as on the group's brane tiling pages: its title; its authors, as on the
+             publications page, and its arXiv number; its abstract, as arXiv gives it; and the button for its citation
+             (js/cite.js) -->
+        <section class="section section--tight section--brand" id="cite">
             <div class="wrap">
-                <p class="u-kicker"><a href="https://rakkyeongseong.github.io/explorer.html">Research Explorer</a> &middot; Interactive demonstration</p>
-                <h2 class="section-title">Explainable AI for Brane Tilings</h2>
-                <p class="section-sub">Diagnosing Inconsistencies in 4<i>d</i> <i>N</i>&nbsp;=&nbsp;1 Gauge Theories with Explainable AI &middot; Seong-Jin Lee, Rak-Kyeong Seong &middot; <a class="link-ref" href="https://arxiv.org/abs/2609.21867" target="_blank" rel="noopener">arXiv:2609.21867</a></p>
+                <div class="callout">
+                    <div>
+                        <p class="u-kicker u-kicker--light">Reference</p>
+                        <h2 class="callout__title">Diagnosing Inconsistencies in 4d N=1 Gauge Theories with Explainable AI</h2>
+                        <p class="callout__text bt-ref">Seong-Jin Lee, <em>Rak-Kyeong Seong</em> &middot; <span class="bt-ref__arxiv"><a href="https://arxiv.org/abs/2609.21867" target="_blank" rel="noopener">arXiv:2609.21867</a> [hep-th]</span></p>
+                        <p class="callout__text">Brane tilings are bipartite graphs on a 2-torus that encode the Lagrangians of 4d N=1 supersymmetric gauge theories arising on D3-branes probing toric Calabi-Yau 3-folds. Among these bipartite graphs, only those that satisfy geometric consistency conditions correspond to well-behaved quantum field theories. We train a convolutional neural network (CNN) to distinguish geometrically consistent from inconsistent brane tilings directly from their Kasteleyn matrices. We study a family of 4d N=1 theories obtained by adding diagonal edges to the hexagonal faces of the brane tiling for the abelian orbifold C^3/Z_3 x Z_3, and find that the CNN identifies geometric inconsistency with high accuracy. For inconsistent brane tilings that can be rendered consistent by Higgsing a single bifundamental chiral field, we show that gradient-based saliency analysis can be used to localize the responsible chiral fields with accuracy well above a matched random baseline. These results demonstrate that explainable AI (XAI) can be used to identify local defects responsible for inconsistencies in supersymmetric gauge theories.</p>
+                    </div>
+                    <div class="btn-row">
+                        <button type="button" class="btn btn-solid-light bt-cite" data-static>Download citation (BibTeX)</button>
+                        <a class="btn btn-on-dark" href="mailto:seong@unist.ac.kr">Contact</a>
+                        <a class="btn btn-on-dark" href="https://rakkyeongseong.github.io/research.html">Research</a>
+                    </div>
+                </div>
             </div>
         </section>
-        <section class="section">
-            <div class="wrap wrap--narrow prose">
-                <p>Brane tilings are bipartite graphs on a 2-torus that encode <strong>4-dimensional N=1 supersymmetric gauge theories</strong> arising on D3-branes probing toric Calabi-Yau 3-folds. Only those satisfying geometric consistency conditions correspond to well-behaved quantum field theories.</p>
-                <p>This page carries the family studied in the paper: diagonal edges added to the hexagonal faces of the brane tiling for the abelian orbifold C<sup>3</sup>/(Z<sub>3</sub>&times;Z<sub>3</sub>) with orbifold action (0,1,2)(1,0,2). Click a hexagon to add or change its diagonal and the four panels below recompute &mdash; the tiling, the <strong>saliency map of the trained convolutional network</strong>, the toric diagram with its consistency verdict, and the quiver of the gauge theory with its superpotential.</p>
-                <p>The laboratory runs entirely in the browser. The permanent of the Kasteleyn matrix is evaluated exactly, the consistency criterion is checked in integer arithmetic, and the network's forward pass and input gradient are computed from the manuscript checkpoint itself, so what you see is the published model's own explanation rather than a reconstruction of it.</p>
-                <p style="margin-bottom:0">Below the laboratory, the paper's results are laid out in full: how the network was trained, how it classifies all <span data-r="dataset.total|int">262,144</span> tilings, how well its saliency finds a defect in each of the <span data-r="dataset.one_edge_fixable|int">7,236</span> 1-edge-fixable ones, and the three worked examples, each a click away from the laboratory. Those numbers are not computed in the browser: they are read from the companion code's evaluation of the same checkpoint and from the record of its training run.</p>
-                <nav class="page-toc" aria-label="On this page">
-                    <span class="page-toc__label">On this page</span>
-                    <ul>
-                        <li><a href="#lab">Laboratory</a></li>
-                        <li><a href="#guide">Reading the panels</a></li>
-                        <li><a href="#training">Training</a></li>
-                        <li><a href="#classification">Classification</a></li>
-                        <li><a href="#localisation">Localisation</a></li>
-                        <li><a href="#examples">Figures 6&ndash;8</a></li>
-                        <li><a href="#provenance">Provenance</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </section>
+        <noscript><div class="wrap"><p class="r-status r-status--noscript">The laboratory on this page is drawn with JavaScript, which is turned off.</p></div></noscript>
         <div class="filter-bar">
             <div class="wrap wrap--wide filter-bar__inner">
                 <span class="filter-bar__label">Load a tiling</span>
@@ -373,260 +366,6 @@
                 </details>
             </div>
         </section>
-        <section class="section section--tint" id="guide">
-            <div class="wrap">
-                <div class="section-head">
-                    <p class="u-kicker">How to read the panels</p>
-                    <h2 class="section-title">From bipartite graph to gauge theory</h2>
-                </div>
-                <div class="grid grid--2">
-                    <article class="card-item">
-                        <div class="card-item__body">
-                            <h3 class="card-item__title">(a) The brane tiling</h3>
-                            <p class="card-item__meta">The base tiling is the periodic honeycomb of the orbifold: nine white and nine black nodes in the fundamental domain, nine hexagonal faces and 27 edges. Faces are gauge groups, edges are bifundamental chiral fields, and nodes are superpotential terms.</p>
-                            <p class="card-item__meta" style="margin-bottom:0">Each hexagon may carry one long diagonal in one of three orientations, encoded by a digit 0&ndash;3. Reading the nine digits row by row as a base-4 number gives the configuration index, so the family has 4<sup>9</sup> = 262,144 members. A diagonal splits a hexagon into two quadrilaterals, adding one gauge group.</p>
-                        </div>
-                    </article>
-                    <article class="card-item">
-                        <div class="card-item__body">
-                            <h3 class="card-item__title">(b) The CNN and its saliency map</h3>
-                            <p class="card-item__meta">A three-layer convolutional network with circular padding reads the 9&times;9&times;9 Kasteleyn tensor and returns one logit for the consistent class. The weights are the manuscript checkpoint, evaluated here in JavaScript.</p>
-                            <p class="card-item__meta" style="margin-bottom:0">Gradient saliency is projected to a node-pair map for display. For a 1-edge-fixable tiling, the present diagonal with the largest saliency component is the network's diagnosis; removing it, by Higgsing the corresponding chiral field, restores consistency in <span data-r="localisation.scopes.diagonal.top1.percent|pct">88.18%</span> of the <span data-r="dataset.one_edge_fixable|int">7,236</span> cases against a matched random baseline of <span data-r="dataset.random_baseline_percent|pct">21.10%</span>.</p>
-                        </div>
-                    </article>
-                    <article class="card-item">
-                        <div class="card-item__body">
-                            <h3 class="card-item__title">(c) Toric diagram and consistency</h3>
-                            <p class="card-item__meta">The Kasteleyn matrix <i>K</i>(<i>x</i>,&nbsp;<i>y</i>) weights every edge by its winding numbers around the torus. Its permanent is the Newton polynomial <i>P</i>(<i>x</i>,&nbsp;<i>y</i>), whose Newton polygon is the toric diagram; each lattice point is labelled by the number of perfect matchings carrying that monomial.</p>
-                            <p class="card-item__meta" style="margin-bottom:0">A tiling is <strong>geometrically consistent</strong> when 2<i>A</i> = <i>N<sub>G</sub></i>: twice the area of the toric diagram equals the number of gauge groups. This is the paper's criterion, taken there as equivalent to the existence of an isoradial embedding and to properly ordered, non-self-intersecting zig-zag paths. Only <span data-r="dataset.consistent|int">1,387</span> of the <span data-r="dataset.total|int">262,144</span> tilings pass. Of the failures, <span data-r="dataset.one_edge_fixable|int">7,236</span> are one diagonal deletion away from consistency, the paper's <em>1-edge-fixable</em> tilings; counting the fewest deletions in the same way, 39,006 are <em>3-edge-fixable</em>, needing three and no fewer.</p>
-                        </div>
-                    </article>
-                    <article class="card-item">
-                        <div class="card-item__body">
-                            <h3 class="card-item__title">(d) The quiver and its superpotential</h3>
-                            <p class="card-item__meta">Each face of the tiling is a gauge group U(<i>N</i>)<sub><i>i</i></sub> and each edge a bifundamental chiral field <i>X<sub>ij</sub></i>, drawn as an arrow from the face on one side of the edge to the face on the other, clockwise around the white node of the edge. For the bare tiling this is the quiver of the orbifold: the nine faces fall into three classes, and every gauge group has one field to each group of the next class. Following the group's brane tiling figures, six gauge groups sit on a hexagon and three inside it.</p>
-                            <p class="card-item__meta" style="margin-bottom:0">A diagonal splits a gauge group in two, joined by the diagonal's own field; Higgsing that field, which is what <em>Remove this edge</em> does, joins them again. The superpotential has one term per node of the tiling: the fields around a white node, clockwise, with a plus sign, and around a black node, anticlockwise, with a minus sign, so that every field appears once with each sign.</p>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-        <section class="section section--tight section--brand" id="results">
-            <div class="wrap">
-                <div class="section-head section-head--center">
-                    <p class="u-kicker u-kicker--light">Results from the paper</p>
-                    <h2 class="section-title">The trained classifier over the full family</h2>
-                    <p class="section-sub">Classification of all <span data-r="dataset.total|int">262,144</span> tilings at the decision rule p &gt; 0.5, and defect localisation over the <span data-r="dataset.one_edge_fixable|int">7,236</span> 1-edge-fixable ones, recomputed from the manuscript checkpoint.</p>
-                </div>
-                <div class="stat-row">
-                    <div class="stat"><span class="stat__num" data-r="classification.accuracy_percent|pct">99.92%</span><span class="stat__label">accuracy</span></div>
-                    <div class="stat"><span class="stat__num" data-r="classification.f1_percent|pct">92.76%</span><span class="stat__label">F<sub>1</sub>-score</span></div>
-                    <div class="stat"><span class="stat__num" data-r="localisation.scopes.all.top1.percent|pct">82.92%</span><span class="stat__label">top-1, all 729 components</span></div>
-                    <div class="stat"><span class="stat__num" data-r="localisation.scopes.diagonal.top1.percent|pct">88.18%</span><span class="stat__label">top-1, present diagonals</span></div>
-                </div>
-            </div>
-        </section>
-        <section class="section" id="training">
-            <div class="wrap wrap--wide">
-                <div class="section-head">
-                    <p class="u-kicker">Training</p>
-                    <h2 class="section-title">Training the classifier</h2>
-                    <p class="section-sub">The pool holds all <span data-r="training.pool_consistent|int">1,387</span> consistent tilings and <span data-r="training.pool_inconsistent|int">13,870</span> inconsistent ones, about one to ten, split 9&nbsp;:&nbsp;1 within each class into <span data-r="training.train|int">13,728</span> training and <span data-r="training.validation|int">1,529</span> validation tilings. The network is given only the binary consistency label, never the location of a defect.</p>
-                </div>
-                <div class="r-grid r-grid--main-side">
-                    <article class="r-card">
-                        <div class="r-card__head">
-                            <h3 class="r-card__title">Loss and validation F<sub>1</sub>-score by epoch</h3>
-                            <span class="pill">Fig. 4</span>
-                        </div>
-                        <div class="r-card__body">
-                            <ul class="r-legend">
-                                <li><span class="r-key r-key--s1-line" aria-hidden="true"></span><span>training loss</span></li>
-                                <li><span class="r-key r-key--s2-line" aria-hidden="true"></span><span>validation loss and F<sub>1</sub>-score</span></li>
-                            </ul>
-                            <div class="r-chart" id="chart-training" role="group" aria-label="Training and validation loss and validation F1-score over the training epochs. Use the left and right arrow keys to read each epoch." data-results-host><p class="r-status">Loading the training history&hellip;</p></div>
-                            <p class="sr-only" id="training-live" aria-live="polite"></p>
-                            <p class="r-note">The paper draws the two measures on one plot with two scales; here they share the epoch axis and keep a scale each. The F<sub>1</sub>-score is computed on the validation tilings at p &gt; 0.5. The vertical rule marks epoch <span data-r="training.best_epoch|int">45</span>, the checkpoint used everywhere on this page: the highest validation F<sub>1</sub>-score, a tie going to the lower validation loss. Point at the chart, or focus it and use the arrow keys, to read any epoch.</p>
-                            <details class="detk">
-                                <summary>The training history as a table</summary>
-                                <div id="table-training" data-results-host></div>
-                            </details>
-                        </div>
-                    </article>
-                    <article class="r-card">
-                        <div class="r-card__head">
-                            <h3 class="r-card__title">Network and schedule</h3>
-                        </div>
-                        <div class="r-card__body">
-                            <dl class="r-dl">
-                                <dt>Input</dt>
-                                <dd>the unsigned Kasteleyn tensor: 9 winding channels &times; 9 white &times; 9 black nodes, every present edge a 1</dd>
-                                <dt>Network</dt>
-                                <dd>three 3&nbsp;&times;&nbsp;3 convolutions with circular padding and <span data-r="model.conv_channels.0|int">32</span>, <span data-r="model.conv_channels.1|int">64</span> and <span data-r="model.conv_channels.2|int">128</span> channels, each followed by BatchNorm and ReLU; a fully connected layer of <span data-r="model.hidden|int">256</span> units on the <span data-r="model.flattened_features|int">10,368</span> flattened features, followed by ReLU and dropout <span data-r="model.dropout|raw">0.6</span>; a final linear layer giving one logit for the consistent class</dd>
-                                <dt>Parameters</dt>
-                                <dd><span data-r="model.parameters|int">2,750,145</span></dd>
-                                <dt>Optimiser</dt>
-                                <dd>Adam on the binary cross-entropy, batch size <span data-r="training.batch_size|int">32</span>, weight decay <span data-r="training.weight_decay|sci">10⁻⁴</span></dd>
-                                <dt>Learning rate</dt>
-                                <dd><span data-r="training.lr0|sci">3×10⁻⁴</span>, lowered by <span data-r="training.lr_step_decrement|sci">4×10⁻⁵</span> after every <span data-r="training.lr_step_epochs|int">10</span> epochs, to <span data-r="training.history.lr.49|sci">1.4×10⁻⁴</span> at the end</dd>
-                                <dt>Negatives</dt>
-                                <dd>drawn by their deficit <i>N<sub>G</sub></i> &minus; 2<i>A</i> rather than uniformly: <span data-r="training.pool_inconsistent_by_deficit.1|int">4,623</span> with deficit 1, <span data-r="training.pool_inconsistent_by_deficit.2|int">4,623</span> with 2 and <span data-r="training.pool_inconsistent_by_deficit.3_or_more|int">4,624</span> with 3 or more</dd>
-                                <dt>Seed</dt>
-                                <dd><span data-r="training.seed|int">315</span></dd>
-                                <dt>Checkpoint</dt>
-                                <dd>epoch <span data-r="training.best_epoch|int">45</span> of <span data-r="training.epochs|int">50</span>, with validation F<sub>1</sub>-score <span data-r="training.best_val_f1_percent|pct">87.94%</span> and loss <span data-r="training.best_val_loss|num4">0.0695</span>. On the <span data-r="training.validation|int">1,529</span> validation tilings it finds <span data-r="training.validation_at_checkpoint.tp|int">124</span> of the <span data-r="training.validation_consistent|int">139</span> consistent ones, with <span data-r="training.validation_at_checkpoint.fp|int">19</span> false positives</dd>
-                            </dl>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-        <section class="section section--tint" id="classification">
-            <div class="wrap wrap--wide">
-                <div class="section-head">
-                    <p class="u-kicker">Classification</p>
-                    <h2 class="section-title">Consistency across all <span data-r="dataset.total|int">262,144</span> tilings</h2>
-                    <p class="section-sub">Table I of the paper, recomputed. A tiling is called consistent when p &gt; 0.5. Precision, recall and the F<sub>1</sub>-score refer to the consistent class; the ROC-AUC does not depend on the threshold.</p>
-                </div>
-                <div class="readout readout--flush">
-                    <div class="readout__cell">
-                        <span class="readout__label">Accuracy</span>
-                        <span class="readout__num" data-r="classification.accuracy_percent|pct">99.92%</span>
-                        <span class="readout__sub">correct verdicts over the whole family</span>
-                    </div>
-                    <div class="readout__cell">
-                        <span class="readout__label">Precision</span>
-                        <span class="readout__num" data-r="classification.precision_percent|pct">87.72%</span>
-                        <span class="readout__sub">of the <span data-r="classification.tp+classification.fp|int">1,556</span> tilings called consistent, the share that are consistent</span>
-                    </div>
-                    <div class="readout__cell">
-                        <span class="readout__label">Recall</span>
-                        <span class="readout__num" data-r="classification.recall_percent|pct">98.41%</span>
-                        <span class="readout__sub">of the <span data-r="dataset.consistent|int">1,387</span> consistent tilings, the share found</span>
-                    </div>
-                    <div class="readout__cell">
-                        <span class="readout__label">F<sub>1</sub>-score</span>
-                        <span class="readout__num" data-r="classification.f1_percent|pct">92.76%</span>
-                        <span class="readout__sub">the harmonic mean of precision and recall</span>
-                    </div>
-                    <div class="readout__cell">
-                        <span class="readout__label">ROC-AUC</span>
-                        <span class="readout__num" data-r="classification.roc_auc_percent|pct">99.99%</span>
-                        <span class="readout__sub">the ranking quality over every threshold at once</span>
-                    </div>
-                </div>
-                <div class="r-grid r-grid--main-side r-grid--spaced">
-                    <article class="r-card">
-                        <div class="r-card__head">
-                            <h3 class="r-card__title">The network's verdict against the exact one</h3>
-                            <span class="pill pill--case"><i>p</i> &gt; 0.5</span>
-                        </div>
-                        <div class="r-card__body">
-                            <div id="confusion" data-results-host><p class="r-status">Loading the results&hellip;</p></div>
-                            <p class="r-note">Each count is followed by its share of the row. The network misses <span data-r="classification.fn|int">22</span> of the consistent tilings and lets through <span data-r="classification.fp|int">191</span> of the <span data-r="dataset.inconsistent|int">260,757</span> inconsistent ones.</p>
-                        </div>
-                    </article>
-                    <article class="r-card">
-                        <div class="r-card__head">
-                            <h3 class="r-card__title">Reading the numbers</h3>
-                        </div>
-                        <div class="r-card__body">
-                            <p class="r-text">Because <span data-r="dataset.inconsistent|int">260,757</span> of the tilings are inconsistent, calling every tiling inconsistent would already score <span data-r="dataset.all_negative_accuracy_percent|pct">99.47%</span> accuracy. The F<sub>1</sub>-score on the consistent class is the informative number.</p>
-                            <p class="r-text">The evaluation covers the whole family, including the <span data-r="training.pool|int">15,257</span> tilings of the training pool, so it shows how the network partitions the family rather than how it generalises; there is no separate test split.</p>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-        <section class="section" id="localisation">
-            <div class="wrap wrap--wide">
-                <div class="section-head">
-                    <p class="u-kicker">Defect localisation</p>
-                    <h2 class="section-title">Finding the defect in <span data-r="dataset.one_edge_fixable|int">7,236</span> tilings</h2>
-                    <p class="section-sub">A diagonal is a <em>defect</em> when removing it alone restores consistency, and a tiling with at least one is <em>1-edge-fixable</em>: <span data-r="dataset.NR1|int">5,157</span> of them have a single defect and <span data-r="dataset.NR2|int">2,079</span> have two. The 729 components <i>S<sub>uvk</sub></i> of each saliency tensor are ranked, and Top-<i>k</i> succeeds when a defect is among the <i>k</i> highest.</p>
-                </div>
-                <div class="r-grid r-grid--main-side">
-                    <article class="r-card">
-                        <div class="r-card__head">
-                            <h3 class="r-card__title">Top-<i>k</i> accuracy by what is ranked</h3>
-                        </div>
-                        <div class="r-card__body">
-                            <div id="scope-table" data-results-host><p class="r-status">Loading the results&hellip;</p></div>
-                            <p class="r-text">Ranking only the diagonals present in the tiling lifts Top-1 from <span data-r="localisation.scopes.all.top1.percent|pct">82.92%</span> to <span data-r="localisation.scopes.diagonal.top1.percent|pct">88.18%</span>, more than four times the matched random baseline: a present diagonal picked at random is a defect with probability <i>N<sub>R</sub></i>/<i>N<sub>D</sub></i>, <span data-r="dataset.random_baseline_percent|pct">21.10%</span> on average over the tilings. That restricted choice is the edge <em>Remove this edge</em> deletes in the laboratory.</p>
-                        </div>
-                    </article>
-                    <article class="r-card">
-                        <div class="r-card__head">
-                            <h3 class="r-card__title">Where the top component lands</h3>
-                        </div>
-                        <div class="r-card__body">
-                            <div id="placement" data-results-host><p class="r-status">Loading the results&hellip;</p></div>
-                            <p class="r-text">Over all 729 components, the top one is a diagonal of the tiling in <span data-r="localisation.top1_placement.all.diagonal.count|int">6,667</span> tilings and a component that carries no edge in the other <span data-r="localisation.top1_placement.all.absent.count|int">569</span>; it is never a base edge. For tilings with six diagonals, the top component carries no edge in <span data-r="localisation.top1_placement.ND6.absent.percent|pct">15.12%</span> of cases against <span data-r="localisation.top1_placement.all.absent.percent|pct">7.86%</span> overall, one reason <i>N<sub>D</sub></i>&nbsp;=&nbsp;6 has the lowest Top-1 accuracy over all 729 components.</p>
-                        </div>
-                    </article>
-                </div>
-                <article class="r-card r-card--spaced">
-                    <div class="r-card__head">
-                        <h3 class="r-card__title">Top-1 accuracy by the number of diagonals</h3>
-                        <span class="pill">Table II &middot; Fig. 5</span>
-                    </div>
-                    <div class="r-card__body">
-                        <div id="nd-plot" data-results-host><p class="r-status">Loading the results&hellip;</p></div>
-                        <p class="r-text">Accuracy is not monotonic in <i>N<sub>D</sub></i>. It broadly follows the mean defect fraction, the share of a tiling's diagonals that are defects: six and nine diagonals have the smallest share of correct candidates and the lowest Top-1 accuracies, though the defect is often still near the top of the ranking. The number of defects does not explain it, since every tiling with one diagonal and every tiling with six has a single defect, yet over all 729 components the two rows sit at opposite ends. No tiling with two or three diagonals is 1-edge-fixable. The bars count the tilings with each <i>N<sub>D</sub></i>: <span data-r="dataset.ND_mean|num2">6.43</span> diagonals on average, with a median of <span data-r="dataset.ND_median|int">7</span>.</p>
-                        <div id="table2" data-results-host></div>
-                    </div>
-                </article>
-                <div class="r-grid r-grid--2 r-grid--spaced">
-                    <article class="r-card">
-                        <div class="r-card__head">
-                            <h3 class="r-card__title">The map agrees with the tensor</h3>
-                        </div>
-                        <div class="r-card__body">
-                            <p class="r-text">The panels above colour each diagonal by the projected map <i>M<sub>uv</sub></i> = max<sub><i>k</i></sub> <i>S<sub>uvk</sub></i>. Restricted to node pairs that carry a diagonal, its largest value picks the same diagonal as the tensor's own ranking of the present diagonals in <span data-r="localisation.projection.same|int">7,226</span> of the <span data-r="dataset.one_edge_fixable|int">7,236</span> tilings, <span data-r="localisation.projection.percent|pct">99.86%</span> of them. The other <span data-r="localisation.projection.different|int">10</span>, each a link into the laboratory:</p>
-                            <div id="projection-links" data-results-host></div>
-                        </div>
-                    </article>
-                    <article class="r-card">
-                        <div class="r-card__head">
-                            <h3 class="r-card__title">Seen in training or not</h3>
-                        </div>
-                        <div class="r-card__body">
-                            <div id="exposure" data-results-host><p class="r-status">Loading the results&hellip;</p></div>
-                            <p class="r-text"><span data-r="localisation.exposure.exposed.n|int">4,623</span> of the 1-edge-fixable tilings were in the training pool and <span data-r="localisation.exposure.unexposed.n|int">2,613</span> never were, with nearly the same mix of <i>N<sub>D</sub></i>. Top-1 differs by <span data-r="localisation.exposure.exposed_minus_unexposed_pp.top1|num2">1.18</span> and Top-3 by <span data-r="localisation.exposure.exposed_minus_unexposed_pp.top3|num2">0.67</span> percentage points between them, both computed from the unrounded accuracies. Since the network was also never shown where a defect is, this indicates that the localisation does not rest on memorised tilings.</p>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-        <section class="section section--tint" id="examples">
-            <div class="wrap wrap--wide">
-                <div class="section-head">
-                    <p class="u-kicker">Figures 6 to 8</p>
-                    <h2 class="section-title">Diagnose, Higgs, repair</h2>
-                    <p class="section-sub">The paper's three worked examples. In each, the largest of the 729 saliency components lies on the defect, and Higgsing its chiral field gives a consistent tiling whose toric diagram has the same corners. Open one in the laboratory to reproduce its published saliency map; <em>Remove this edge</em> then draws the map after the repair on the same scale, as the paper shows it for Figures 7 and 8.</p>
-                </div>
-                <div class="grid grid--3" id="examples-grid" data-results-host><p class="r-status">Loading the examples&hellip;</p></div>
-            </div>
-        </section>
-        <section class="section section--tight" id="provenance">
-            <div class="wrap">
-                <div class="section-head">
-                    <p class="u-kicker">Provenance</p>
-                    <h2 class="section-title">Where these numbers come from</h2>
-                </div>
-                <div class="prose">
-                    <p>Every number in the results sections is read from <code>model/results.json</code>, which <code>tools/export_results.py</code> writes from two sources. The classification and localisation results come from a fresh evaluation of the manuscript checkpoint by the companion code, the Python code that accompanies the paper: inference on all <span data-r="dataset.total|int">262,144</span> tilings and saliency gradients for all <span data-r="dataset.one_edge_fixable|int">7,236</span> 1-edge-fixable ones, with no cached predictions. That evaluation passes <span data-r="source.verification.passed|int">501</span> of the verifier's <span data-r="source.verification.checks|int">501</span> numerical and geometric checks against the companion code's reference values, among them Tables I and II of the paper. The training curves are the history recorded while the checkpoint was trained, read as it was saved. The laboratory runs the same network in the browser, and its test suite matches the Python saliency to about 10<sup>&minus;7</sup> of the peak.</p>
-                </div>
-                <details class="detk">
-                    <summary>Checksums and commands</summary>
-                    <div id="provenance-list" data-results-host></div>
-                    <pre># in the companion code's top folder
-python evaluate.py --device cpu
-python verify.py --results outputs/paper
-python /path/to/website/tools/export_results.py outputs/paper /path/to/website/model/results.json</pre>
-                </details>
-            </div>
-        </section>
         </main>
         <section class="section section--tight section--deep">
             <div class="wrap">
@@ -720,10 +459,10 @@ python /path/to/website/tools/export_results.py outputs/paper /path/to/website/m
         <script src="assets/js/popper.min.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <script src="site.js"></script>
+        <script src="js/cite.js"></script>
         <script src="js/brane.js"></script>
         <script src="js/cnn.js"></script>
         <script src="js/quiver.js"></script>
         <script src="js/app.js"></script>
-        <script src="js/results.js"></script>
     </body>
 </html>
