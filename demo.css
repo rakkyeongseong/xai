@@ -1,0 +1,926 @@
+/* ==========================================================================
+   Explainable AI for brane tilings — demo layer
+   Loaded after site.css.  Adds only what the four interactive panels and the
+   results sections under them need; everything else (type, buttons, sections,
+   cards, footer) comes from the group site's own stylesheets, which are used
+   unmodified.
+   Built on the site's tokens, so a palette change there carries over here.
+   ========================================================================== */
+
+:root {
+    --ok: #2e8b57;
+    --fail: #c0392b;
+    /* Chart series (results sections).  Two categorical slots, validated on the
+       white card surface: lightness band, chroma floor, CVD and normal-vision
+       separation and 3:1 contrast all pass.  The site's own --brand-primary
+       reads as grey at chart scale (chroma 0.07), so it carries structure
+       (the count bars), never a series identity. */
+    --series-1: #2a78d6;
+    --series-2: #eb6834;
+    --series-muted: #6b7b86;
+    /* Filled blocks that carry white labels side by side (the top-component bars):
+       a darker step of the blue (4.9:1 under white text; #2a78d6 gives 4.4:1) and a
+       darker neutral (7.0:1), which also keeps the pair apart, OKLab ΔE 16 in normal
+       vision and under protan and deutan simulation (the lighter pair gives 14). */
+    --series-1-fill: #2470cc;
+    --series-muted-fill: #4e5b65;
+}
+
+/* ------------------------------------------------------------- panels ---- */
+
+.panels {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.25fr) minmax(0, 0.9fr);
+    gap: clamp(1.25rem, 2.5vw, 2rem);
+    align-items: stretch;
+}
+
+@media (max-width: 991.98px) {
+    .panels { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+    .panels > :first-child { grid-column: 1 / -1; }
+}
+
+@media (max-width: 575.98px) {
+    .panels { grid-template-columns: minmax(0, 1fr); }
+}
+
+.panel {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.panel__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.95rem 1.15rem 0.7rem;
+    border-bottom: 1px solid var(--rule);
+}
+
+.panel__tag {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--ink-faint);
+}
+
+.panel__title {
+    font-size: 1.05rem;
+    margin: 0;
+    flex: 1 1 auto;
+    text-transform: none;
+}
+
+.panel__body {
+    padding: 1rem 1.15rem 1.15rem;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.panel__body svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.panel__note {
+    font-size: 0.82rem;
+    color: var(--ink-muted);
+    text-align: center;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* --------------------------------------------------- figure typography --- */
+
+.fig-text { font-family: var(--font-sans); fill: var(--ink); }
+
+/* An SVG `fill` attribute loses to any CSS rule, so a label whose colour is
+   decided when it is drawn cannot carry `.fig-text`: the rule above would paint
+   it ink.  These two classes set the typeface and leave the colour alone.       */
+.fig-value { font-family: var(--font-sans); fill: #fff; }   /* values on the map squares */
+.fig-value-edge { font-family: var(--font-sans); }          /* value beside a diagonal, in the edge's own colour */
+.fig-muted { font-family: var(--font-sans); fill: var(--ink-muted); }
+.fig-label { font-family: var(--font-sans); font-style: italic; }
+.fig-tick { font-family: var(--font-sans); fill: var(--ink-soft); }
+.cbar-label { font-family: var(--font-sans); fill: var(--ink-soft); }
+
+.hex {
+    fill: transparent;
+    cursor: pointer;
+    transition: fill 0.12s ease;
+}
+
+.hex:hover, .hex:focus-visible { fill: rgba(66, 109, 140, 0.16); outline: none; }
+
+.diag { cursor: pointer; }
+.diag:hover { filter: brightness(0.85); }
+
+/* ----------------------------------------------------------- quiver (d) --- */
+/* The quiver takes a row of its own under (a)-(c), with the superpotential beside it. */
+
+.panels > .panel--wide { grid-column: 1 / -1; }
+
+.panel__body.quiver {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    gap: clamp(1.25rem, 3vw, 3rem);
+}
+
+.quiver__figure {
+    flex: 0 1 29rem;
+    min-width: min(100%, 17rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.quiver__side {
+    flex: 1 1 24rem;
+    min-width: 0;
+    max-width: 42rem;
+    padding-top: 0.25rem;
+}
+
+.quiver__title {
+    font-size: 1rem;
+    margin: 0 0 0.35rem;
+    text-transform: none;
+}
+
+.quiver__sub {
+    font-size: 0.82rem;
+    color: var(--ink-muted);
+    line-height: 1.5;
+    margin: 0 0 1rem;
+}
+
+.q-node { cursor: pointer; }
+.q-node:focus { outline: none; }
+.q-node:hover circle, .q-node:focus-visible circle { stroke: var(--brand-primary); }
+.q-label { font-family: var(--font-sans); font-weight: 500; fill: #000; pointer-events: none; }
+.q-arrow:hover path { filter: brightness(0.8); }
+
+.wlist {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem 1.75rem;
+    margin-bottom: 1.1rem;
+}
+
+@media (max-width: 575.98px) { .wlist { grid-template-columns: minmax(0, 1fr); } }
+
+.wlist__head {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin: 0 0 0.4rem;
+}
+
+.wlist__terms {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--ink);
+}
+
+.wlist__terms li { display: flex; align-items: baseline; gap: 0.45rem; white-space: nowrap; }
+.wterm__node { color: var(--ink-faint); min-width: 1.6rem; }
+.wterm__sign { width: 0.7rem; text-align: center; color: var(--ink-soft); }
+.wterm__fields { overflow-wrap: anywhere; white-space: normal; }
+.wfield { padding: 0 0.06em; border-radius: 2px; }
+.wfield.is-top { background: rgba(255, 0, 255, 0.14); box-shadow: inset 0 -1.5px 0 rgba(255, 0, 255, 0.75); }
+
+.legend--quiver { justify-content: flex-start; }
+
+.key-arrow {
+    display: inline-block;
+    position: relative;
+    width: 26px;
+    height: 3px;
+    background: #000;
+}
+
+.key-arrow::after {
+    content: "";
+    position: absolute;
+    left: 9px;
+    top: -4px;
+    border-left: 9px solid #000;
+    border-top: 5.5px solid transparent;
+    border-bottom: 5.5px solid transparent;
+}
+
+.key-arrow--diag { background: linear-gradient(90deg, #00ffff, #ff00ff); }
+.key-arrow--diag::after { border-left-color: #8080ff; }
+
+/* --------------------------------------------------- toric diagram key --- */
+
+.toric-verdict { text-align: center; line-height: 1.5; margin: 0; }
+
+.toric-verdict strong {
+    display: block;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--ink);
+    margin-bottom: 0.15rem;
+}
+
+.toric-verdict strong.is-ok { color: #2e8b57; }
+.toric-verdict strong.is-fail { color: #c0392b; }
+.toric-verdict span { display: block; font-size: 1rem; color: var(--ink); }
+
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.35rem 1rem;
+    font-size: 0.78rem;
+    color: var(--ink-muted);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.legend li { display: inline-flex; align-items: center; gap: 0.4rem; }
+
+.legend .dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    border: 1.5px solid #000;
+    display: inline-block;
+}
+
+/* -------------------------------------------------------------- pills ---- */
+
+.pill {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.55rem;
+    border-radius: 2px;
+    border: 1px solid var(--rule-strong);
+    color: var(--ink-muted);
+    background: var(--surface-tint);
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.pill--ok { color: #2e8b57; border-color: rgba(46, 139, 87, 0.4); background: rgba(46, 139, 87, 0.08); }
+.pill--fail { color: #c0392b; border-color: rgba(192, 57, 43, 0.4); background: rgba(192, 57, 43, 0.08); }
+.pill--brand { color: var(--brand-primary); border-color: rgba(66, 109, 140, 0.35); background: rgba(66, 109, 140, 0.08); }
+/* a pill holding a symbol, whose case carries meaning (p, not P) */
+.pill--case { text-transform: none; letter-spacing: 0.04em; }
+
+/* ------------------------------------------------------------ readout ---- */
+/* A white counterpart to the site's `.stat-row`, which is built for the
+   brand-coloured bands and would render its numbers in white here. */
+
+/* The hairlines between cells are each cell's own 1px ring rather than the grid's
+   background showing through the gaps, so a row the cells do not fill stays white. */
+.readout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
+    gap: 1px;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-top: clamp(1.5rem, 2.5vw, 2.25rem);
+}
+
+.readout__cell { background: var(--surface); padding: 1.1rem 1.15rem; box-shadow: 0 0 0 1px var(--rule); }
+
+.readout__label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    display: block;
+    margin-bottom: 0.35rem;
+}
+
+.readout__num {
+    font-family: var(--font-sans);
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.15;
+    display: block;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Inter's tabular figures widen the hyphen too, which spaces out "3-edge-fixable" */
+#stat-fix { font-variant-numeric: normal; }
+
+.readout__num.is-ok { color: #2e8b57; }
+.readout__num.is-fail { color: #c0392b; }
+
+.readout__sub {
+    display: block;
+    margin-top: 0.35rem;
+    font-size: 0.82rem;
+    color: var(--ink-muted);
+    line-height: 1.45;
+}
+
+.readout__cell--wide { grid-column: span 2; }
+
+@media (max-width: 575.98px) { .readout__cell--wide { grid-column: span 1; } }
+
+.checklist {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.2rem;
+    font-size: 0.875rem;
+}
+
+.checklist li { display: flex; align-items: baseline; gap: 0.5rem; color: var(--ink-soft); }
+
+.checklist .mark {
+    display: inline-block;
+    width: 1.1rem;
+    font-weight: 700;
+    text-align: center;
+    flex: 0 0 auto;
+}
+
+.checklist .mark.is-ok { color: #2e8b57; }
+.checklist .mark.is-fail { color: #c0392b; }
+.checklist .mark.is-na { color: var(--ink-faint); }
+
+/* ------------------------------------------------------------ controls --- */
+
+.field { display: inline-flex; align-items: center; gap: 0.5rem; }
+
+.field input[type="text"] {
+    font: inherit;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-variant-numeric: tabular-nums;
+    padding: 0.55rem 0.7rem;
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--radius);
+    width: 11rem;
+    color: var(--ink);
+    background: #fff;
+}
+
+.field input:focus-visible { outline: 2px solid var(--brand-primary); outline-offset: 1px; }
+
+.field label { margin: 0; }
+
+.model-status { font-size: 0.85rem; color: var(--ink-muted); margin: 0; }
+
+/* Messages from saving and loading files, under the controls that produced them. */
+.io-status {
+    flex: 1 1 100%;
+    margin: 0;
+    font-size: 0.82rem;
+    color: var(--ink-muted);
+}
+
+.io-status:empty { display: none; }
+.io-status.is-error { color: var(--fail); }
+
+details.detk {
+    margin-top: clamp(1.5rem, 2.5vw, 2.25rem);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    background: var(--surface-tint);
+    padding: 0.7rem 1.1rem;
+}
+
+details.detk summary {
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    color: var(--brand-primary);
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+details.detk pre {
+    margin: 0.7rem 0 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-family: var(--bs-font-monospace);
+    font-size: 0.8rem;
+    color: var(--ink);
+}
+
+/* The demo needs a second button size: the site's own `.btn-sm` is the same
+   height as `.btn`, which is right for a page of links and wrong for a strip
+   of controls sitting under a figure. */
+.btn-compact { --btn-h: 2.5rem; padding: 0 1.1rem; font-size: 0.75rem; }
+
+.u-num { font-variant-numeric: tabular-nums; }
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ==========================================================================
+   Results sections — built by js/results.js from model/results.json
+   ========================================================================== */
+
+/* ------------------------------------------------------ on this page ---- */
+
+.page-toc {
+    margin-top: 1.6rem;
+    padding-top: 1.1rem;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem 1.25rem;
+}
+
+.page-toc__label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+}
+
+.page-toc ul { display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; margin: 0; padding: 0; list-style: none; }
+.page-toc a { font-size: 0.9rem; font-weight: 600; border-bottom: 1px solid rgba(66, 109, 140, 0.35); }
+.page-toc a:hover { text-decoration: none; border-bottom-color: var(--brand-primary); }
+/* a section the contents list (or the skip link) has scrolled to takes focus for keyboard
+   users, without a ring */
+main section[tabindex="-1"]:focus, main[tabindex="-1"]:focus { outline: none; }
+
+/* site.css asks for smooth scrolling unconditionally */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+}
+
+/* --------------------------------------------------------- cards, grid -- */
+
+.r-grid { display: grid; gap: clamp(1.25rem, 2.5vw, 2rem); }
+.r-grid--main-side { grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); }
+.r-grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.r-grid--spaced, .r-card--spaced { margin-top: clamp(1.25rem, 2.5vw, 2rem); }
+
+@media (max-width: 991.98px) {
+    .r-grid--main-side, .r-grid--2 { grid-template-columns: minmax(0, 1fr); }
+}
+
+.r-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.r-card__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.95rem 1.15rem 0.7rem;
+    border-bottom: 1px solid var(--rule);
+}
+
+.r-card__title { font-size: 1.05rem; margin: 0; text-transform: none; }
+
+.r-card__body {
+    padding: 1rem 1.15rem 1.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    min-width: 0;
+    flex: 1 1 auto;
+}
+
+.r-card__body > details.detk { margin-top: 0; }
+
+.r-text { margin: 0; font-size: 0.92rem; line-height: 1.65; color: var(--ink-soft); }
+.r-note { margin: 0; font-size: 0.82rem; line-height: 1.55; color: var(--ink-muted); }
+.r-status { margin: 0; font-size: 0.85rem; color: var(--ink-muted); }
+.r-status.is-error { color: var(--fail); }
+.r-status--noscript { padding: 1rem 0; }
+
+.readout--flush { margin-top: 0; }
+
+/* Table I's five cells: one row on a wide screen, three over two on a tablet, one column on a
+   phone, so the strip never ends in an empty bordered cell. */
+@media (min-width: 1100px) { #classification .readout { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+@media (min-width: 576px) and (max-width: 1099.98px) {
+    #classification .readout { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+    #classification .readout > .readout__cell { grid-column: span 2; }
+    #classification .readout > .readout__cell:nth-child(n+4) { grid-column: span 3; }
+}
+@media (max-width: 575.98px) { #classification .readout { grid-template-columns: minmax(0, 1fr); } }
+
+/* A definition list for settings: the label in the readout's small capitals. */
+.r-dl {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: 0.6rem 1.1rem;
+    margin: 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+}
+
+.r-dl dt {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    padding-top: 0.2rem;
+}
+
+.r-dl dd { margin: 0; color: var(--ink-soft); }
+.r-note--hash { margin-top: 0.8rem; }
+.r-dl--hash { margin-top: 0.5rem; }
+.r-dl--hash dd code { font-size: 0.78rem; word-break: break-all; color: var(--ink-soft); }
+/* file names in the provenance prose, in the same grey as the checksums and commands under them */
+#provenance .prose code { color: var(--ink-soft); }
+
+@media (max-width: 575.98px) {
+    .r-dl { grid-template-columns: minmax(0, 1fr); gap: 0.15rem; }
+    .r-dl dd { margin-bottom: 0.55rem; }
+}
+
+/* ------------------------------------------------------------- tables --- */
+
+/* A table wider than its card scrolls sideways, and a shadow at the edge it can scroll towards
+   says so: the covers scroll with the content and hide the shadow at an end already reached.
+   --cover is the surface the table sits on. */
+.r-table-wrap {
+    overflow-x: auto;
+    --cover: var(--surface);
+    background:
+        linear-gradient(to right, var(--cover) 40%, transparent) left center / 1.5rem 100% no-repeat local,
+        linear-gradient(to left, var(--cover) 40%, transparent) right center / 1.5rem 100% no-repeat local,
+        radial-gradient(farthest-side at 0 50%, rgba(11, 46, 63, 0.22), transparent) left center / 0.6rem 100% no-repeat scroll,
+        radial-gradient(farthest-side at 100% 50%, rgba(11, 46, 63, 0.22), transparent) right center / 0.6rem 100% no-repeat scroll;
+}
+details.detk .r-table-wrap { --cover: var(--surface-tint); }
+.r-table-wrap + .r-note { margin-top: 0.55rem; }
+
+.r-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink-soft);
+}
+
+.r-table th, .r-table td {
+    padding: 0.5rem 0.6rem;
+    border-bottom: 1px solid var(--rule);
+    text-align: right;
+    vertical-align: baseline;
+    white-space: nowrap;
+}
+
+/* the first column holds the row labels; a second header row (under a group heading) has none */
+.r-table tbody > tr > :first-child, .r-table tfoot > tr > :first-child,
+.r-table thead > tr:first-child > :first-child { text-align: left; padding-left: 0; }
+.r-table tr > :last-child { padding-right: 0; }
+
+.r-table thead th {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    vertical-align: bottom;
+    white-space: normal;
+    border-bottom-color: var(--rule-strong);
+}
+
+.r-table thead th.r-group { text-align: center; border-bottom-color: var(--rule); }
+.r-table tbody th { font-weight: 600; color: var(--ink); white-space: normal; }
+.r-table tfoot th, .r-table tfoot td { font-weight: 600; color: var(--ink); border-top: 1px solid var(--rule-strong); border-bottom: 0; }
+.r-table .r-pc { display: inline-block; min-width: 4.3em; margin-left: 0.4em; color: var(--ink-muted); font-size: 0.9em; font-weight: 400; }
+.r-table .r-sub { display: block; font-weight: 400; font-size: 0.78rem; color: var(--ink-muted); }
+.r-table tr.is-baseline th, .r-table tr.is-baseline td { color: var(--ink-muted); }
+.r-table tr.is-split th, .r-table tr.is-split td { border-top: 1px solid var(--rule-strong); }
+/* Under border-collapse a tie between two 1px solid borders goes to the upper cell, so the
+   strong rules above the footer and above a split row are that cell's bottom border too. */
+.r-table tbody:has(+ tfoot) > tr:last-child > *,
+.r-table tr:has(+ tr.is-split) > * { border-bottom-color: var(--rule-strong); }
+.r-table td.is-hit { color: var(--ink); font-weight: 600; }
+.r-table td.is-ok { color: var(--ok); font-weight: 600; }
+.r-table td.is-fail { color: var(--fail); font-weight: 600; }
+
+.r-table--compact th, .r-table--compact td { padding: 0.32rem 0.45rem; }
+.r-table--compact tbody th { font-weight: 400; color: var(--ink-muted); }
+
+/* the 50-epoch history, inside a <details>: a scrolling box with a fixed header row */
+.r-table--dense { font-size: 0.8rem; }
+.r-table--dense th, .r-table--dense td { padding: 0.28rem 0.55rem; }
+#table-training .r-table-wrap { max-height: 22rem; overflow-y: auto; margin-top: 0.7rem; }
+.r-table--dense thead th { position: sticky; top: 0; background: var(--surface-tint); }
+.r-table tr.is-marked th, .r-table tr.is-marked td { background: rgba(235, 104, 52, 0.1); }
+
+/* On a phone a share goes under its count and cells may wrap, so fewer tables need to scroll. */
+@media (max-width: 575.98px) {
+    .r-table th, .r-table td { white-space: normal; padding-left: 0.3rem; padding-right: 0.3rem; }
+    .r-table .r-pc { display: block; min-width: 0; margin-left: 0; }
+}
+
+/* -------------------------------------------------- legend, keys, tip --- */
+
+.r-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+}
+
+.r-legend li { display: inline-flex; align-items: center; gap: 0.4rem; }
+
+/* A key is a 16 px box with its mark drawn inside, so rows of keys line up. */
+.r-key {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 12px;
+    flex: 0 0 auto;
+}
+
+.r-key::before { content: ""; display: block; }
+.r-key--s1::before, .r-key--s2::before { width: 10px; height: 10px; border-radius: 50%; }
+.r-key--s1::before { background: var(--series-1); }
+.r-key--s2::before { background: var(--series-2); }
+.r-key--base::before { width: 9px; height: 9px; border-radius: 1px; border: 2px solid var(--series-muted); box-sizing: border-box; transform: rotate(45deg); }
+.r-key--s1-line::before, .r-key--s2-line::before { width: 16px; height: 2px; border-radius: 1px; }
+.r-key--s1-line::before { background: var(--series-1); }
+.r-key--s2-line::before { background: var(--series-2); }
+.r-key--s1-block::before, .r-key--muted-block::before, .r-key--empty-block::before { width: 12px; height: 12px; border-radius: 2px; box-sizing: border-box; }
+.r-key--s1-block::before { background: var(--series-1-fill); }
+.r-key--muted-block::before { background: var(--series-muted-fill); }
+.r-key--empty-block::before { border: 1.5px solid var(--rule-strong); }
+.r-key--none::before { content: none; }
+
+.r-tip {
+    position: absolute;
+    z-index: 1050;
+    display: none;
+    pointer-events: none;
+    min-width: 11rem;
+    max-width: 20rem;
+    padding: 0.55rem 0.75rem 0.6rem;
+    background: var(--surface);
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--radius);
+    box-shadow: 0 12px 32px -18px rgba(11, 46, 63, 0.55);
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    line-height: 1.45;
+    color: var(--ink-muted);
+}
+
+.r-tip__title { font-weight: 600; color: var(--ink); margin-bottom: 0.3rem; }
+.r-tip__row { display: flex; align-items: center; gap: 0.5rem; }
+.r-tip__val { font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; min-width: 4.8rem; }
+
+/* ---------------------------------------------------- training chart --- */
+
+.r-chart { position: relative; width: 100%; min-height: 12rem; border-radius: var(--radius); }
+.r-chart:focus { outline: none; }
+.r-chart:focus-visible { outline: 2px solid var(--brand-primary); outline-offset: 4px; }
+.r-svg { display: block; max-width: 100%; height: auto; overflow: visible; }
+/* on a touch screen a sideways drag scrubs the epochs, and a vertical one still scrolls the page */
+.r-chart .r-svg { touch-action: pan-y; }
+.r-svg text { font-family: var(--font-sans); }
+.r-axis-title { font-size: 12px; font-weight: 600; fill: var(--ink-soft); }
+.r-tick { font-size: 11px; fill: var(--ink-muted); font-variant-numeric: tabular-nums; }
+.r-grid-line { stroke: var(--rule); stroke-width: 1; shape-rendering: crispEdges; }
+.r-axis-line { stroke: var(--rule-strong); stroke-width: 1; shape-rendering: crispEdges; }
+.r-rule { stroke: var(--ink-faint); stroke-width: 1; stroke-dasharray: 3 3; }
+.r-line { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.r-line--s1 { stroke: var(--series-1); }
+.r-line--s2 { stroke: var(--series-2); }
+.r-dot { stroke: var(--surface); stroke-width: 2; }
+.r-dot--s1 { fill: var(--series-1); }
+.r-dot--s2 { fill: var(--series-2); }
+.r-end { font-size: 12px; fill: var(--ink-soft); }
+.r-halo { paint-order: stroke; stroke: var(--surface); stroke-width: 4px; stroke-linejoin: round; }
+.r-cross__line { stroke: var(--ink-muted); stroke-width: 1; }
+.r-hit { fill: transparent; cursor: crosshair; }
+
+/* ---------------------------------------- accuracy by N_D (dot plot) ---- */
+/* One row per number of diagonals: how many tilings (a bar), and on a shared
+   0-100 % track the two Top-1 accuracies and the mean defect fraction.     */
+
+.ndplot { list-style: none; margin: 0.85rem 0 0; padding: 0; }
+
+.ndplot__row {
+    --ring: var(--surface);
+    display: grid;
+    grid-template-columns: 2.6rem 9rem minmax(0, 1fr);
+    align-items: center;
+    gap: 1rem;
+    padding: 0.28rem 0.4rem;
+    border-radius: 2px;
+}
+
+.ndplot__row[tabindex]:hover, .ndplot__row[tabindex]:focus-visible { --ring: var(--surface-tint); background: var(--surface-tint); outline: none; }
+.ndplot__row[tabindex]:focus-visible { box-shadow: inset 0 0 0 1.5px var(--brand-primary); }
+
+.ndplot__row--head {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    padding-bottom: 0.45rem;
+}
+
+.ndplot__row--total { border-top: 1px solid var(--rule-strong); margin-top: 0.35rem; padding-top: 0.55rem; }
+.ndplot__row--total .ndplot__nd { font-weight: 600; }
+.ndplot__nd { font-weight: 600; color: var(--ink); font-size: 0.9rem; font-variant-numeric: tabular-nums; }
+.ndplot__count { display: flex; align-items: center; gap: 0.5rem; }
+.ndplot__bartrack { flex: 1 1 auto; height: 8px; }
+.ndplot__bar { display: block; height: 100%; background: var(--brand-primary); border-radius: 0 4px 4px 0; }
+.ndplot__num { flex: 0 0 3.1rem; text-align: right; font-size: 0.82rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+
+.ndplot__track {
+    position: relative;
+    height: 22px;
+    background: linear-gradient(to right, var(--rule) 1px, transparent 1px) 0 0 / 25% 100% repeat-x;
+    border-right: 1px solid var(--rule);
+}
+
+.ndplot__link {
+    position: absolute;
+    top: 50%;
+    height: 2px;
+    transform: translateY(-50%);
+    background: var(--rule-strong);
+}
+
+.ndplot__dot {
+    position: absolute;
+    top: 50%;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 0 2px var(--ring);
+}
+
+/* The two accuracies take a lane each, just above and below the centre line, so equal values
+   stay two dots; the mean defect fraction is a hollow diamond on the line, drawn over both. */
+.ndplot__dot--s1 { background: var(--series-1); top: calc(50% - 4px); }
+.ndplot__dot--s2 { background: var(--series-2); top: calc(50% + 4px); }
+.ndplot__dot--base {
+    width: 10px;
+    height: 10px;
+    border-radius: 1px;
+    border: 2px solid var(--series-muted);
+    box-sizing: border-box;
+    background: transparent;
+    box-shadow: none;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+.ndplot__none { font-size: 0.8rem; color: var(--ink-muted); font-style: italic; }
+.ndplot__row--empty .ndplot__nd, .ndplot__row--empty .ndplot__num { color: var(--ink-muted); }
+
+.ndplot__ticks { position: relative; display: block; height: 1.1rem; }
+.ndplot__ticks span { position: absolute; top: 0; transform: translateX(-50%); font-size: 0.72rem; color: var(--ink-muted); font-variant-numeric: tabular-nums; }
+
+@media (max-width: 575.98px) {
+    .ndplot__row { grid-template-columns: 1.6rem 5.4rem minmax(0, 1fr); gap: 0.6rem; padding-inline: 0.15rem; }
+    .ndplot__row--head span:last-child { font-size: 0.68rem; letter-spacing: 0.06em; }
+    .ndplot__num { flex-basis: 2.6rem; font-size: 0.75rem; }
+}
+
+/* ------------------------------------------- top-1 placement (segbar) --- */
+
+.segrow {
+    margin-top: 0.7rem;
+    display: grid;
+    grid-template-columns: 9.5rem minmax(0, 1fr);
+    gap: 0.4rem 0.9rem;
+    align-items: center;
+}
+
+.segrow__label { font-size: 0.82rem; color: var(--ink-soft); }
+.segbar { display: flex; gap: 2px; height: 28px; }
+
+.segbar__part {
+    flex: 1 1 0;
+    min-width: 4px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    padding: 0 0.55rem;
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.segbar__part--s1 { background: var(--series-1-fill); }
+.segbar__part--muted { background: var(--series-muted-fill); }
+/* a base edge: drawn only if the top component ever lands on one (so far it never has) */
+.segbar__part--empty { background: var(--surface); box-shadow: inset 0 0 0 1.5px var(--rule-strong); color: var(--ink-soft); }
+.segbar__part:focus { outline: none; }
+.segbar__part:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+@media (max-width: 575.98px) { .segrow { grid-template-columns: minmax(0, 1fr); } }
+
+#placement details.detk { margin-top: 0.9rem; }
+
+/* ------------------------------------------------ links to the lab ------ */
+
+.r-links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; margin: 0; padding: 0; list-style: none; font-variant-numeric: tabular-nums; }
+.r-links a { font-size: 0.875rem; font-weight: 600; border-bottom: 1px solid rgba(66, 109, 140, 0.35); }
+.r-links a:hover { text-decoration: none; border-bottom-color: var(--brand-primary); }
+
+/* ------------------------------------------------- Figures 6-8 cards ---- */
+
+.r-ex .card-item__body { gap: 0.65rem; }
+.r-ex__head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.35rem 0.75rem; }
+
+/* The before/after table needs a card about 312 px wide: three columns give that from about
+   1,100 px, two from about 700 px.  With two, the third card sits centred under the pair. */
+@media (max-width: 1099.98px) {
+    #examples-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    #examples-grid > .r-ex:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: calc((100% - clamp(1.5rem, 2.5vw, 2.25rem)) / 2);     /* the column width: .grid's gap */
+    }
+}
+@media (max-width: 699.98px) {
+    #examples-grid { grid-template-columns: minmax(0, 1fr); }
+    #examples-grid > .r-ex:last-child:nth-child(odd) { grid-column: auto; justify-self: stretch; width: auto; }
+}
+.r-ex__meta { margin: 0; font-size: 0.85rem; color: var(--ink-muted); }
+.r-ex__meta code { font-size: 0.9em; color: var(--ink-soft); }
+.r-ex__lead { margin: 0; font-size: 0.9rem; line-height: 1.6; color: var(--ink-soft); }
+.r-ex__sub { margin: 0.35rem 0 -0.2rem; font-size: 0.8rem; color: var(--ink-muted); }
+
+/* Saliency of each present diagonal, as a meter list: the defect in the
+   accent, the rest in grey, so the gap between them is what reads first. */
+.meters { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.3rem; }
+
+.meters__row {
+    display: grid;
+    grid-template-columns: 7.6rem minmax(0, 1fr) 2.6rem;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+}
+
+.meters__track { height: 8px; background: var(--surface-tint-2); border-radius: 0 4px 4px 0; }
+.meters__bar { display: block; height: 100%; min-width: 2px; background: var(--series-muted); border-radius: 0 4px 4px 0; }
+.meters__row.is-top { color: var(--ink); font-weight: 600; }
+.meters__row.is-top .meters__bar { background: var(--series-1); }
+.meters__val { text-align: right; font-variant-numeric: tabular-nums; }
+
+@media print {
+    .filter-bar, details.detk { display: none; }
+    .r-tip { display: none !important; }
+    /* the marks of the HTML charts are backgrounds, which browsers drop when printing by default */
+    .ndplot, .segbar, .meters, .r-legend { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}

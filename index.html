@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-PR3GWF8R"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        </script>
+        <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-KLXQQ4D6"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        </script>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5ZV627WH"></script>
+        <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-FEP7KRSN84"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-FEP7KRSN84');
+        </script>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="author" content="Rak-Kyeong Seong">
+        <title>Explainable AI for Brane Tilings — Rak-Kyeong Seong Research Group</title>
+        <meta name="description" content="Companion to arXiv:2609.21867: an interactive brane tiling of C^3/(Z_3 x Z_3) with its toric diagram, quiver and CNN saliency map, and the paper's results in full.">
+        <link rel="canonical" href="https://rakkyeongseong.github.io/xai/">
+        <link rel="icon" href="favicon.png" type="image/png" sizes="192x192">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="Rak-Kyeong Seong Research Group">
+        <meta property="og:title" content="Explainable AI for Brane Tilings — Rak-Kyeong Seong Research Group">
+        <meta property="og:description" content="Companion to arXiv:2609.21867: an interactive brane tiling of C^3/(Z_3 x Z_3) with its toric diagram, quiver and CNN saliency map, and the paper's results in full.">
+        <meta property="og:url" content="https://rakkyeongseong.github.io/xai/">
+        <meta property="og:image" content="https://rakkyeongseong.github.io/xai/preview.jpg">
+        <meta property="og:locale" content="en_GB">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@rak_seong">
+        <!-- Structured data (schema.org JSON-LD) read by Google Search -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebSite",
+              "@id": "https://rakkyeongseong.github.io/#website",
+              "url": "https://rakkyeongseong.github.io/",
+              "name": "Rak-Kyeong Seong Research Group"
+            },
+            {
+              "@type": "Organization",
+              "@id": "https://rakkyeongseong.github.io/#organization",
+              "name": "Rak-Kyeong Seong Research Group",
+              "url": "https://rakkyeongseong.github.io/",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://rakkyeongseong.github.io/group_logo_1.jpg",
+                "width": 2512,
+                "height": 441
+              }
+            },
+            {
+              "@type": "WebPage",
+              "@id": "https://rakkyeongseong.github.io/xai/",
+              "url": "https://rakkyeongseong.github.io/xai/",
+              "name": "Explainable AI for Brane Tilings",
+              "description": "Companion to arXiv:2609.21867: an interactive brane tiling of C^3/(Z_3 x Z_3) with its toric diagram, quiver and CNN saliency map, and the paper's results in full.",
+              "isPartOf": {
+                "@id": "https://rakkyeongseong.github.io/#website"
+              },
+              "about": {
+                "@id": "https://rakkyeongseong.github.io/#organization"
+              },
+              "inLanguage": "en",
+              "image": "https://rakkyeongseong.github.io/xai/preview.jpg",
+              "breadcrumb": {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://rakkyeongseong.github.io/"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Research Explorer",
+                    "item": "https://rakkyeongseong.github.io/explorer.html"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Explainable AI for Brane Tilings",
+                    "item": "https://rakkyeongseong.github.io/xai/"
+                  }
+                ]
+              },
+              "citation": {
+                "@type": "ScholarlyArticle",
+                "name": "Diagnosing Inconsistencies in 4d N=1 Gauge Theories with Explainable AI",
+                "author": [
+                  {
+                    "@type": "Person",
+                    "name": "Seong-Jin Lee"
+                  },
+                  {
+                    "@type": "Person",
+                    "name": "Rak-Kyeong Seong"
+                  }
+                ],
+                "url": "https://arxiv.org/abs/2609.21867"
+              }
+            }
+          ]
+        }
+        </script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+        <!-- Bootstrap core CSS -->
+        <link href="bootstrap_theme/bootstrap.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="blocks.css">
+        <link href="style.css" rel="stylesheet">
+        <!-- Site design layer (typography, buttons, archive lists, cards) -->
+        <link href="site.css" rel="stylesheet">
+        <!-- Demo layer (the four interactive panels and the results sections) -->
+        <link href="demo.css" rel="stylesheet">
+        <noscript><style>[data-results-host] > .r-status, #model-status { display: none; }</style></noscript>
+    </head>
+    <body>
+        <a class="skip-link" href="#main">Skip to content</a>
+        <nav class="site-nav navbar navbar-expand-lg navbar-light">
+            <div class="wrap wrap--wide d-flex flex-wrap align-items-center justify-content-between">
+                <a class="navbar-brand" href="https://rakkyeongseong.github.io/index.html"> <img class="brand-logo" src="group_logo_1.jpg" width="2512" height="441" alt="Rak-Kyeong Seong Research Group, UNIST"> </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#site-menu" aria-controls="site-menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="site-menu">
+                    <ul class="ms-auto navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="https://rakkyeongseong.github.io/index.html">Home</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="https://rakkyeongseong.github.io/pi.html">PI</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="https://rakkyeongseong.github.io/team.html">Team</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="https://rakkyeongseong.github.io/research.html">Research</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="https://rakkyeongseong.github.io/publications.html">Publications</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="https://rakkyeongseong.github.io/explorer.html">Explorer</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="https://rakkyeongseong.github.io/news.html">News</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="https://rakkyeongseong.github.io/events.html">Events</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="https://rakkyeongseong.github.io/photos.html">Photos</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="https://rakkyeongseong.github.io/join.html">Join</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <header class="hero page-hero">
+            <div class="wrap">
+                <p class="u-kicker u-kicker--light">Interactive Research Resource and Summary</p>
+                <h1 class="hero-title">Research Explorer</h1>
+            </div>
+        </header>
+        <main id="main">
+        <noscript><div class="wrap"><p class="r-status r-status--noscript">The laboratory, the tables and the charts on this page are drawn with JavaScript, which is turned off; the numbers in the text are complete without it.</p></div></noscript>
+        <section class="section section--tight section--tint">
+            <div class="wrap">
+                <p class="u-kicker"><a href="https://rakkyeongseong.github.io/explorer.html">Research Explorer</a> &middot; Interactive demonstration</p>
+                <h2 class="section-title">Explainable AI for Brane Tilings</h2>
+                <p class="section-sub">Diagnosing Inconsistencies in 4<i>d</i> <i>N</i>&nbsp;=&nbsp;1 Gauge Theories with Explainable AI &middot; Seong-Jin Lee, Rak-Kyeong Seong &middot; <a class="link-ref" href="https://arxiv.org/abs/2609.21867" target="_blank" rel="noopener">arXiv:2609.21867</a></p>
+            </div>
+        </section>
+        <section class="section">
+            <div class="wrap wrap--narrow prose">
+                <p>Brane tilings are bipartite graphs on a 2-torus that encode <strong>4-dimensional N=1 supersymmetric gauge theories</strong> arising on D3-branes probing toric Calabi-Yau 3-folds. Only those satisfying geometric consistency conditions correspond to well-behaved quantum field theories.</p>
+                <p>This page carries the family studied in the paper: diagonal edges added to the hexagonal faces of the brane tiling for the abelian orbifold C<sup>3</sup>/(Z<sub>3</sub>&times;Z<sub>3</sub>) with orbifold action (0,1,2)(1,0,2). Click a hexagon to add or change its diagonal and the four panels below recompute &mdash; the tiling, the <strong>saliency map of the trained convolutional network</strong>, the toric diagram with its consistency verdict, and the quiver of the gauge theory with its superpotential.</p>
+                <p>The laboratory runs entirely in the browser. The permanent of the Kasteleyn matrix is evaluated exactly, the consistency criterion is checked in integer arithmetic, and the network's forward pass and input gradient are computed from the manuscript checkpoint itself, so what you see is the published model's own explanation rather than a reconstruction of it.</p>
+                <p style="margin-bottom:0">Below the laboratory, the paper's results are laid out in full: how the network was trained, how it classifies all <span data-r="dataset.total|int">262,144</span> tilings, how well its saliency finds a defect in each of the <span data-r="dataset.one_edge_fixable|int">7,236</span> 1-edge-fixable ones, and the three worked examples, each a click away from the laboratory. Those numbers are not computed in the browser: they are read from the companion code's evaluation of the same checkpoint and from the record of its training run.</p>
+                <nav class="page-toc" aria-label="On this page">
+                    <span class="page-toc__label">On this page</span>
+                    <ul>
+                        <li><a href="#lab">Laboratory</a></li>
+                        <li><a href="#guide">Reading the panels</a></li>
+                        <li><a href="#training">Training</a></li>
+                        <li><a href="#classification">Classification</a></li>
+                        <li><a href="#localisation">Localisation</a></li>
+                        <li><a href="#examples">Figures 6&ndash;8</a></li>
+                        <li><a href="#provenance">Provenance</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+        <div class="filter-bar">
+            <div class="wrap wrap--wide filter-bar__inner">
+                <span class="filter-bar__label">Load a tiling</span>
+                <div class="btn-row" id="preset-bar">
+                    <button class="btn btn-outline btn-compact" type="button" data-index="0">Base tiling</button>
+                    <button class="btn btn-outline btn-compact" type="button" data-index="197411">Fig. 6</button>
+                    <button class="btn btn-outline btn-compact" type="button" data-index="8898">Fig. 7</button>
+                    <button class="btn btn-outline btn-compact" type="button" data-index="137563">Fig. 8</button>
+                    <button class="btn btn-outline btn-compact" type="button" id="btn-random-fixable" title="A random tiling that one diagonal deletion makes consistent: one of the paper's 7,236 1-edge-fixable tilings">Random 1-edge-fixable</button>
+                    <button class="btn btn-outline btn-compact" type="button" id="btn-random-fixable3" title="A random tiling that three diagonal deletions make consistent, and no fewer: one of 39,006">Random 3-edge-fixable</button>
+                    <button class="btn btn-outline btn-compact" type="button" id="btn-random-consistent">Random consistent</button>
+                    <button class="btn btn-outline btn-compact" type="button" id="btn-random">Random</button>
+                </div>
+                <form class="field" id="index-form">
+                    <label class="filter-bar__label" for="index-input">Index</label>
+                    <input id="index-input" type="text" inputmode="numeric" autocomplete="off" aria-label="Configuration index (0 to 262143) or the nine state digits" placeholder="0 – 262143 or 9 digits">
+                    <button class="btn btn-primary btn-compact" type="submit">Go</button>
+                </form>
+                <div class="field" role="group" aria-labelledby="json-label">
+                    <span class="filter-bar__label" id="json-label">File</span>
+                    <button class="btn btn-outline btn-compact" type="button" id="btn-save-json" title="Download the current configuration, with its results, as a JSON file">Save JSON</button>
+                    <button class="btn btn-outline btn-compact" type="button" id="btn-load-json" title="Display a configuration from a JSON file saved by this page">Load JSON</button>
+                    <input type="file" id="file-json" accept=".json,application/json" hidden>
+                </div>
+                <p class="io-status" id="io-status" role="status" aria-live="polite"></p>
+            </div>
+        </div>
+        <section class="section" id="lab">
+            <div class="wrap wrap--wide">
+                <div class="section-head d-flex flex-wrap align-items-end justify-content-between gap-3">
+                    <div>
+                        <p class="u-kicker">Brane tiling laboratory</p>
+                        <h2 class="section-title">Hexagonal brane tilings with diagonals</h2>
+                        <p class="section-sub">The original hexagonal tiling, with no diagonals, is the brane tiling for the abelian orbifold C<sup>3</sup>/(Z<sub>3</sub>&times;Z<sub>3</sub>) with orbifold action (0,1,2)(1,0,2). Click a hexagon, or its gauge group in the quiver, to cycle through <em>no diagonal</em> and the three diagonal orientations; right-click cycles backwards. Every diagonal adds one gauge group.</p>
+                    </div>
+                    <p class="model-status" id="model-status">Loading the CNN&hellip;</p>
+                </div>
+
+                <div class="panels">
+                    <article class="panel" id="panel-tiling">
+                        <div class="panel__head">
+                            <span class="panel__tag">(a)</span>
+                            <h3 class="panel__title">brane tiling</h3>
+                            <span class="pill" id="tiling-pill">N<sub>D</sub> = 0</span>
+                        </div>
+                        <div class="panel__body">
+                            <svg id="tiling-svg" role="img" aria-label="Interactive brane tiling"></svg>
+                            <p class="panel__note" id="tiling-note"></p>
+                        </div>
+                    </article>
+
+                    <article class="panel" id="panel-map">
+                        <div class="panel__head">
+                            <span class="panel__tag">(b)</span>
+                            <h3 class="panel__title">saliency map</h3>
+                            <span class="pill" id="map-pill">CNN</span>
+                        </div>
+                        <div class="panel__body">
+                            <svg id="map-svg" role="img" aria-label="Saliency map over white and black node pairs"></svg>
+                            <p class="panel__note" id="map-note"></p>
+                        </div>
+                    </article>
+
+                    <article class="panel" id="panel-toric">
+                        <div class="panel__head">
+                            <span class="panel__tag">(c)</span>
+                            <h3 class="panel__title">toric diagram</h3>
+                            <span class="pill" id="toric-pill">2A vs N<sub>G</sub></span>
+                        </div>
+                        <div class="panel__body">
+                            <svg id="toric-svg" role="img" aria-label="Toric diagram, the Newton polygon of the permanent of the Kasteleyn matrix"></svg>
+                            <p class="toric-verdict" id="toric-verdict"></p>
+                            <ul class="legend">
+                                <li><span class="dot" style="background:#000"></span> corner</li>
+                                <li><span class="dot" style="background:#ffeb3b"></span> boundary</li>
+                                <li><span class="dot" style="background:#7ce87c"></span> interior</li>
+                                <li><span class="dot" style="background:#fff;border-color:#c0392b;border-style:dashed"></span> missing interior point</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="panel panel--wide" id="panel-quiver">
+                        <div class="panel__head">
+                            <span class="panel__tag">(d)</span>
+                            <h3 class="panel__title">quiver</h3>
+                            <span class="pill" id="quiver-pill">N<sub>G</sub> = 9 &middot; N<sub>E</sub> = 27</span>
+                        </div>
+                        <div class="panel__body quiver">
+                            <div class="quiver__figure">
+                                <svg id="quiver-svg" role="img" aria-label="Quiver: the gauge groups as numbered nodes and the bifundamental chiral fields as arrows"></svg>
+                                <p class="panel__note" id="quiver-note"></p>
+                            </div>
+                            <div class="quiver__side">
+                                <h4 class="quiver__title">Superpotential</h4>
+                                <p class="quiver__sub" id="w-summary"></p>
+                                <div class="wlist">
+                                    <div>
+                                        <p class="wlist__head">white nodes, positive terms</p>
+                                        <ol class="wlist__terms" id="w-plus"></ol>
+                                    </div>
+                                    <div>
+                                        <p class="wlist__head">black nodes, negative terms</p>
+                                        <ol class="wlist__terms" id="w-minus"></ol>
+                                    </div>
+                                </div>
+                                <ul class="legend legend--quiver">
+                                    <li><span class="dot" style="background:#ffd300;border-width:2px"></span> <span>gauge group U(<i>N</i>)<sub><i>i</i></sub>, a face of (a)</span></li>
+                                    <li><span class="key-arrow"></span> <span>chiral field <i>X<sub>ij</sub></i>, an edge</span></li>
+                                    <li><span class="key-arrow key-arrow--diag"></span> <span>field of a diagonal, coloured as in (a)</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="readout">
+                    <div class="readout__cell">
+                        <span class="readout__label">Configuration</span>
+                        <span class="readout__num u-num" id="stat-index">0</span>
+                        <span class="readout__sub">states <code id="stat-states">000000000</code>: one base-4 digit per hexagon, row by row, which is faces 4&ndash;9 and then 1&ndash;3</span>
+                    </div>
+                    <div class="readout__cell">
+                        <span class="readout__label">Gauge groups</span>
+                        <span class="readout__num" id="stat-ng">9</span>
+                        <span class="readout__sub"><i>N<sub>G</sub></i> = 9 + <i>N<sub>D</sub></i>, with <span id="stat-nd">0</span> diagonal edges</span>
+                    </div>
+                    <div class="readout__cell">
+                        <span class="readout__label">Toric diagram area</span>
+                        <span class="readout__num" id="stat-2a">2A = 9</span>
+                        <span class="readout__sub" id="stat-area">A = 4.5</span>
+                    </div>
+                    <div class="readout__cell">
+                        <span class="readout__label">Consistency (exact)</span>
+                        <span class="readout__num" id="stat-verdict">consistent</span>
+                        <ul class="checklist" id="stat-conditions"></ul>
+                    </div>
+                    <div class="readout__cell">
+                        <span class="readout__label">Fixability (exact)</span>
+                        <span class="readout__num" id="stat-fix">&ndash;</span>
+                        <span class="readout__sub" id="stat-fix-sub">the fewest diagonal deletions that restore consistency</span>
+                    </div>
+                    <div class="readout__cell">
+                        <span class="readout__label">CNN prediction</span>
+                        <span class="readout__num" id="stat-prob">&ndash;</span>
+                        <span class="readout__sub" id="stat-pred">probability of the consistent class</span>
+                    </div>
+                    <div class="readout__cell readout__cell--wide">
+                        <span class="readout__label">Saliency-guided repair</span>
+                        <span class="readout__num" id="stat-top">&ndash;</span>
+                        <span class="readout__sub" id="stat-top-sub">highest-saliency diagonal edge present in the tiling</span>
+                    </div>
+                </div>
+
+                <div class="btn-row" style="margin-top:1.25rem">
+                    <button class="btn btn-primary btn-compact" type="button" id="btn-repair" disabled>Remove this edge</button>
+                    <button class="btn btn-outline btn-compact" type="button" id="btn-scale" disabled>Scaled to this tiling</button>
+                    <button class="btn btn-outline btn-compact" type="button" id="btn-undo" disabled>Undo</button>
+                    <button class="btn btn-outline btn-compact" type="button" id="btn-clear">Clear all diagonals</button>
+                </div>
+
+                <details class="detk">
+                    <summary>Newton polynomial P(x, y) = perm K(x, y)</summary>
+                    <pre id="detk"></pre>
+                </details>
+            </div>
+        </section>
+        <section class="section section--tint" id="guide">
+            <div class="wrap">
+                <div class="section-head">
+                    <p class="u-kicker">How to read the panels</p>
+                    <h2 class="section-title">From bipartite graph to gauge theory</h2>
+                </div>
+                <div class="grid grid--2">
+                    <article class="card-item">
+                        <div class="card-item__body">
+                            <h3 class="card-item__title">(a) The brane tiling</h3>
+                            <p class="card-item__meta">The base tiling is the periodic honeycomb of the orbifold: nine white and nine black nodes in the fundamental domain, nine hexagonal faces and 27 edges. Faces are gauge groups, edges are bifundamental chiral fields, and nodes are superpotential terms.</p>
+                            <p class="card-item__meta" style="margin-bottom:0">Each hexagon may carry one long diagonal in one of three orientations, encoded by a digit 0&ndash;3. Reading the nine digits row by row as a base-4 number gives the configuration index, so the family has 4<sup>9</sup> = 262,144 members. A diagonal splits a hexagon into two quadrilaterals, adding one gauge group.</p>
+                        </div>
+                    </article>
+                    <article class="card-item">
+                        <div class="card-item__body">
+                            <h3 class="card-item__title">(b) The CNN and its saliency map</h3>
+                            <p class="card-item__meta">A three-layer convolutional network with circular padding reads the 9&times;9&times;9 Kasteleyn tensor and returns one logit for the consistent class. The weights are the manuscript checkpoint, evaluated here in JavaScript.</p>
+                            <p class="card-item__meta" style="margin-bottom:0">Gradient saliency is projected to a node-pair map for display. For a 1-edge-fixable tiling, the present diagonal with the largest saliency component is the network's diagnosis; removing it, by Higgsing the corresponding chiral field, restores consistency in <span data-r="localisation.scopes.diagonal.top1.percent|pct">88.18%</span> of the <span data-r="dataset.one_edge_fixable|int">7,236</span> cases against a matched random baseline of <span data-r="dataset.random_baseline_percent|pct">21.10%</span>.</p>
+                        </div>
+                    </article>
+                    <article class="card-item">
+                        <div class="card-item__body">
+                            <h3 class="card-item__title">(c) Toric diagram and consistency</h3>
+                            <p class="card-item__meta">The Kasteleyn matrix <i>K</i>(<i>x</i>,&nbsp;<i>y</i>) weights every edge by its winding numbers around the torus. Its permanent is the Newton polynomial <i>P</i>(<i>x</i>,&nbsp;<i>y</i>), whose Newton polygon is the toric diagram; each lattice point is labelled by the number of perfect matchings carrying that monomial.</p>
+                            <p class="card-item__meta" style="margin-bottom:0">A tiling is <strong>geometrically consistent</strong> when 2<i>A</i> = <i>N<sub>G</sub></i>: twice the area of the toric diagram equals the number of gauge groups. This is the paper's criterion, taken there as equivalent to the existence of an isoradial embedding and to properly ordered, non-self-intersecting zig-zag paths. Only <span data-r="dataset.consistent|int">1,387</span> of the <span data-r="dataset.total|int">262,144</span> tilings pass. Of the failures, <span data-r="dataset.one_edge_fixable|int">7,236</span> are one diagonal deletion away from consistency, the paper's <em>1-edge-fixable</em> tilings; counting the fewest deletions in the same way, 39,006 are <em>3-edge-fixable</em>, needing three and no fewer.</p>
+                        </div>
+                    </article>
+                    <article class="card-item">
+                        <div class="card-item__body">
+                            <h3 class="card-item__title">(d) The quiver and its superpotential</h3>
+                            <p class="card-item__meta">Each face of the tiling is a gauge group U(<i>N</i>)<sub><i>i</i></sub> and each edge a bifundamental chiral field <i>X<sub>ij</sub></i>, drawn as an arrow from the face on one side of the edge to the face on the other, clockwise around the white node of the edge. For the bare tiling this is the quiver of the orbifold: the nine faces fall into three classes, and every gauge group has one field to each group of the next class. Following the group's brane tiling figures, six gauge groups sit on a hexagon and three inside it.</p>
+                            <p class="card-item__meta" style="margin-bottom:0">A diagonal splits a gauge group in two, joined by the diagonal's own field; Higgsing that field, which is what <em>Remove this edge</em> does, joins them again. The superpotential has one term per node of the tiling: the fields around a white node, clockwise, with a plus sign, and around a black node, anticlockwise, with a minus sign, so that every field appears once with each sign.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section class="section section--tight section--brand" id="results">
+            <div class="wrap">
+                <div class="section-head section-head--center">
+                    <p class="u-kicker u-kicker--light">Results from the paper</p>
+                    <h2 class="section-title">The trained classifier over the full family</h2>
+                    <p class="section-sub">Classification of all <span data-r="dataset.total|int">262,144</span> tilings at the decision rule p &gt; 0.5, and defect localisation over the <span data-r="dataset.one_edge_fixable|int">7,236</span> 1-edge-fixable ones, recomputed from the manuscript checkpoint.</p>
+                </div>
+                <div class="stat-row">
+                    <div class="stat"><span class="stat__num" data-r="classification.accuracy_percent|pct">99.92%</span><span class="stat__label">accuracy</span></div>
+                    <div class="stat"><span class="stat__num" data-r="classification.f1_percent|pct">92.76%</span><span class="stat__label">F<sub>1</sub>-score</span></div>
+                    <div class="stat"><span class="stat__num" data-r="localisation.scopes.all.top1.percent|pct">82.92%</span><span class="stat__label">top-1, all 729 components</span></div>
+                    <div class="stat"><span class="stat__num" data-r="localisation.scopes.diagonal.top1.percent|pct">88.18%</span><span class="stat__label">top-1, present diagonals</span></div>
+                </div>
+            </div>
+        </section>
+        <section class="section" id="training">
+            <div class="wrap wrap--wide">
+                <div class="section-head">
+                    <p class="u-kicker">Training</p>
+                    <h2 class="section-title">Training the classifier</h2>
+                    <p class="section-sub">The pool holds all <span data-r="training.pool_consistent|int">1,387</span> consistent tilings and <span data-r="training.pool_inconsistent|int">13,870</span> inconsistent ones, about one to ten, split 9&nbsp;:&nbsp;1 within each class into <span data-r="training.train|int">13,728</span> training and <span data-r="training.validation|int">1,529</span> validation tilings. The network is given only the binary consistency label, never the location of a defect.</p>
+                </div>
+                <div class="r-grid r-grid--main-side">
+                    <article class="r-card">
+                        <div class="r-card__head">
+                            <h3 class="r-card__title">Loss and validation F<sub>1</sub>-score by epoch</h3>
+                            <span class="pill">Fig. 4</span>
+                        </div>
+                        <div class="r-card__body">
+                            <ul class="r-legend">
+                                <li><span class="r-key r-key--s1-line" aria-hidden="true"></span><span>training loss</span></li>
+                                <li><span class="r-key r-key--s2-line" aria-hidden="true"></span><span>validation loss and F<sub>1</sub>-score</span></li>
+                            </ul>
+                            <div class="r-chart" id="chart-training" role="group" aria-label="Training and validation loss and validation F1-score over the training epochs. Use the left and right arrow keys to read each epoch." data-results-host><p class="r-status">Loading the training history&hellip;</p></div>
+                            <p class="sr-only" id="training-live" aria-live="polite"></p>
+                            <p class="r-note">The paper draws the two measures on one plot with two scales; here they share the epoch axis and keep a scale each. The F<sub>1</sub>-score is computed on the validation tilings at p &gt; 0.5. The vertical rule marks epoch <span data-r="training.best_epoch|int">45</span>, the checkpoint used everywhere on this page: the highest validation F<sub>1</sub>-score, a tie going to the lower validation loss. Point at the chart, or focus it and use the arrow keys, to read any epoch.</p>
+                            <details class="detk">
+                                <summary>The training history as a table</summary>
+                                <div id="table-training" data-results-host></div>
+                            </details>
+                        </div>
+                    </article>
+                    <article class="r-card">
+                        <div class="r-card__head">
+                            <h3 class="r-card__title">Network and schedule</h3>
+                        </div>
+                        <div class="r-card__body">
+                            <dl class="r-dl">
+                                <dt>Input</dt>
+                                <dd>the unsigned Kasteleyn tensor: 9 winding channels &times; 9 white &times; 9 black nodes, every present edge a 1</dd>
+                                <dt>Network</dt>
+                                <dd>three 3&nbsp;&times;&nbsp;3 convolutions with circular padding and <span data-r="model.conv_channels.0|int">32</span>, <span data-r="model.conv_channels.1|int">64</span> and <span data-r="model.conv_channels.2|int">128</span> channels, each followed by BatchNorm and ReLU; a fully connected layer of <span data-r="model.hidden|int">256</span> units on the <span data-r="model.flattened_features|int">10,368</span> flattened features, followed by ReLU and dropout <span data-r="model.dropout|raw">0.6</span>; a final linear layer giving one logit for the consistent class</dd>
+                                <dt>Parameters</dt>
+                                <dd><span data-r="model.parameters|int">2,750,145</span></dd>
+                                <dt>Optimiser</dt>
+                                <dd>Adam on the binary cross-entropy, batch size <span data-r="training.batch_size|int">32</span>, weight decay <span data-r="training.weight_decay|sci">10⁻⁴</span></dd>
+                                <dt>Learning rate</dt>
+                                <dd><span data-r="training.lr0|sci">3×10⁻⁴</span>, lowered by <span data-r="training.lr_step_decrement|sci">4×10⁻⁵</span> after every <span data-r="training.lr_step_epochs|int">10</span> epochs, to <span data-r="training.history.lr.49|sci">1.4×10⁻⁴</span> at the end</dd>
+                                <dt>Negatives</dt>
+                                <dd>drawn by their deficit <i>N<sub>G</sub></i> &minus; 2<i>A</i> rather than uniformly: <span data-r="training.pool_inconsistent_by_deficit.1|int">4,623</span> with deficit 1, <span data-r="training.pool_inconsistent_by_deficit.2|int">4,623</span> with 2 and <span data-r="training.pool_inconsistent_by_deficit.3_or_more|int">4,624</span> with 3 or more</dd>
+                                <dt>Seed</dt>
+                                <dd><span data-r="training.seed|int">315</span></dd>
+                                <dt>Checkpoint</dt>
+                                <dd>epoch <span data-r="training.best_epoch|int">45</span> of <span data-r="training.epochs|int">50</span>, with validation F<sub>1</sub>-score <span data-r="training.best_val_f1_percent|pct">87.94%</span> and loss <span data-r="training.best_val_loss|num4">0.0695</span>. On the <span data-r="training.validation|int">1,529</span> validation tilings it finds <span data-r="training.validation_at_checkpoint.tp|int">124</span> of the <span data-r="training.validation_consistent|int">139</span> consistent ones, with <span data-r="training.validation_at_checkpoint.fp|int">19</span> false positives</dd>
+                            </dl>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section class="section section--tint" id="classification">
+            <div class="wrap wrap--wide">
+                <div class="section-head">
+                    <p class="u-kicker">Classification</p>
+                    <h2 class="section-title">Consistency across all <span data-r="dataset.total|int">262,144</span> tilings</h2>
+                    <p class="section-sub">Table I of the paper, recomputed. A tiling is called consistent when p &gt; 0.5. Precision, recall and the F<sub>1</sub>-score refer to the consistent class; the ROC-AUC does not depend on the threshold.</p>
+                </div>
+                <div class="readout readout--flush">
+                    <div class="readout__cell">
+                        <span class="readout__label">Accuracy</span>
+                        <span class="readout__num" data-r="classification.accuracy_percent|pct">99.92%</span>
+                        <span class="readout__sub">correct verdicts over the whole family</span>
+                    </div>
+                    <div class="readout__cell">
+                        <span class="readout__label">Precision</span>
+                        <span class="readout__num" data-r="classification.precision_percent|pct">87.72%</span>
+                        <span class="readout__sub">of the <span data-r="classification.tp+classification.fp|int">1,556</span> tilings called consistent, the share that are consistent</span>
+                    </div>
+                    <div class="readout__cell">
+                        <span class="readout__label">Recall</span>
+                        <span class="readout__num" data-r="classification.recall_percent|pct">98.41%</span>
+                        <span class="readout__sub">of the <span data-r="dataset.consistent|int">1,387</span> consistent tilings, the share found</span>
+                    </div>
+                    <div class="readout__cell">
+                        <span class="readout__label">F<sub>1</sub>-score</span>
+                        <span class="readout__num" data-r="classification.f1_percent|pct">92.76%</span>
+                        <span class="readout__sub">the harmonic mean of precision and recall</span>
+                    </div>
+                    <div class="readout__cell">
+                        <span class="readout__label">ROC-AUC</span>
+                        <span class="readout__num" data-r="classification.roc_auc_percent|pct">99.99%</span>
+                        <span class="readout__sub">the ranking quality over every threshold at once</span>
+                    </div>
+                </div>
+                <div class="r-grid r-grid--main-side r-grid--spaced">
+                    <article class="r-card">
+                        <div class="r-card__head">
+                            <h3 class="r-card__title">The network's verdict against the exact one</h3>
+                            <span class="pill pill--case"><i>p</i> &gt; 0.5</span>
+                        </div>
+                        <div class="r-card__body">
+                            <div id="confusion" data-results-host><p class="r-status">Loading the results&hellip;</p></div>
+                            <p class="r-note">Each count is followed by its share of the row. The network misses <span data-r="classification.fn|int">22</span> of the consistent tilings and lets through <span data-r="classification.fp|int">191</span> of the <span data-r="dataset.inconsistent|int">260,757</span> inconsistent ones.</p>
+                        </div>
+                    </article>
+                    <article class="r-card">
+                        <div class="r-card__head">
+                            <h3 class="r-card__title">Reading the numbers</h3>
+                        </div>
+                        <div class="r-card__body">
+                            <p class="r-text">Because <span data-r="dataset.inconsistent|int">260,757</span> of the tilings are inconsistent, calling every tiling inconsistent would already score <span data-r="dataset.all_negative_accuracy_percent|pct">99.47%</span> accuracy. The F<sub>1</sub>-score on the consistent class is the informative number.</p>
+                            <p class="r-text">The evaluation covers the whole family, including the <span data-r="training.pool|int">15,257</span> tilings of the training pool, so it shows how the network partitions the family rather than how it generalises; there is no separate test split.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section class="section" id="localisation">
+            <div class="wrap wrap--wide">
+                <div class="section-head">
+                    <p class="u-kicker">Defect localisation</p>
+                    <h2 class="section-title">Finding the defect in <span data-r="dataset.one_edge_fixable|int">7,236</span> tilings</h2>
+                    <p class="section-sub">A diagonal is a <em>defect</em> when removing it alone restores consistency, and a tiling with at least one is <em>1-edge-fixable</em>: <span data-r="dataset.NR1|int">5,157</span> of them have a single defect and <span data-r="dataset.NR2|int">2,079</span> have two. The 729 components <i>S<sub>uvk</sub></i> of each saliency tensor are ranked, and Top-<i>k</i> succeeds when a defect is among the <i>k</i> highest.</p>
+                </div>
+                <div class="r-grid r-grid--main-side">
+                    <article class="r-card">
+                        <div class="r-card__head">
+                            <h3 class="r-card__title">Top-<i>k</i> accuracy by what is ranked</h3>
+                        </div>
+                        <div class="r-card__body">
+                            <div id="scope-table" data-results-host><p class="r-status">Loading the results&hellip;</p></div>
+                            <p class="r-text">Ranking only the diagonals present in the tiling lifts Top-1 from <span data-r="localisation.scopes.all.top1.percent|pct">82.92%</span> to <span data-r="localisation.scopes.diagonal.top1.percent|pct">88.18%</span>, more than four times the matched random baseline: a present diagonal picked at random is a defect with probability <i>N<sub>R</sub></i>/<i>N<sub>D</sub></i>, <span data-r="dataset.random_baseline_percent|pct">21.10%</span> on average over the tilings. That restricted choice is the edge <em>Remove this edge</em> deletes in the laboratory.</p>
+                        </div>
+                    </article>
+                    <article class="r-card">
+                        <div class="r-card__head">
+                            <h3 class="r-card__title">Where the top component lands</h3>
+                        </div>
+                        <div class="r-card__body">
+                            <div id="placement" data-results-host><p class="r-status">Loading the results&hellip;</p></div>
+                            <p class="r-text">Over all 729 components, the top one is a diagonal of the tiling in <span data-r="localisation.top1_placement.all.diagonal.count|int">6,667</span> tilings and a component that carries no edge in the other <span data-r="localisation.top1_placement.all.absent.count|int">569</span>; it is never a base edge. For tilings with six diagonals, the top component carries no edge in <span data-r="localisation.top1_placement.ND6.absent.percent|pct">15.12%</span> of cases against <span data-r="localisation.top1_placement.all.absent.percent|pct">7.86%</span> overall, one reason <i>N<sub>D</sub></i>&nbsp;=&nbsp;6 has the lowest Top-1 accuracy over all 729 components.</p>
+                        </div>
+                    </article>
+                </div>
+                <article class="r-card r-card--spaced">
+                    <div class="r-card__head">
+                        <h3 class="r-card__title">Top-1 accuracy by the number of diagonals</h3>
+                        <span class="pill">Table II &middot; Fig. 5</span>
+                    </div>
+                    <div class="r-card__body">
+                        <div id="nd-plot" data-results-host><p class="r-status">Loading the results&hellip;</p></div>
+                        <p class="r-text">Accuracy is not monotonic in <i>N<sub>D</sub></i>. It broadly follows the mean defect fraction, the share of a tiling's diagonals that are defects: six and nine diagonals have the smallest share of correct candidates and the lowest Top-1 accuracies, though the defect is often still near the top of the ranking. The number of defects does not explain it, since every tiling with one diagonal and every tiling with six has a single defect, yet over all 729 components the two rows sit at opposite ends. No tiling with two or three diagonals is 1-edge-fixable. The bars count the tilings with each <i>N<sub>D</sub></i>: <span data-r="dataset.ND_mean|num2">6.43</span> diagonals on average, with a median of <span data-r="dataset.ND_median|int">7</span>.</p>
+                        <div id="table2" data-results-host></div>
+                    </div>
+                </article>
+                <div class="r-grid r-grid--2 r-grid--spaced">
+                    <article class="r-card">
+                        <div class="r-card__head">
+                            <h3 class="r-card__title">The map agrees with the tensor</h3>
+                        </div>
+                        <div class="r-card__body">
+                            <p class="r-text">The panels above colour each diagonal by the projected map <i>M<sub>uv</sub></i> = max<sub><i>k</i></sub> <i>S<sub>uvk</sub></i>. Restricted to node pairs that carry a diagonal, its largest value picks the same diagonal as the tensor's own ranking of the present diagonals in <span data-r="localisation.projection.same|int">7,226</span> of the <span data-r="dataset.one_edge_fixable|int">7,236</span> tilings, <span data-r="localisation.projection.percent|pct">99.86%</span> of them. The other <span data-r="localisation.projection.different|int">10</span>, each a link into the laboratory:</p>
+                            <div id="projection-links" data-results-host></div>
+                        </div>
+                    </article>
+                    <article class="r-card">
+                        <div class="r-card__head">
+                            <h3 class="r-card__title">Seen in training or not</h3>
+                        </div>
+                        <div class="r-card__body">
+                            <div id="exposure" data-results-host><p class="r-status">Loading the results&hellip;</p></div>
+                            <p class="r-text"><span data-r="localisation.exposure.exposed.n|int">4,623</span> of the 1-edge-fixable tilings were in the training pool and <span data-r="localisation.exposure.unexposed.n|int">2,613</span> never were, with nearly the same mix of <i>N<sub>D</sub></i>. Top-1 differs by <span data-r="localisation.exposure.exposed_minus_unexposed_pp.top1|num2">1.18</span> and Top-3 by <span data-r="localisation.exposure.exposed_minus_unexposed_pp.top3|num2">0.67</span> percentage points between them, both computed from the unrounded accuracies. Since the network was also never shown where a defect is, this indicates that the localisation does not rest on memorised tilings.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section class="section section--tint" id="examples">
+            <div class="wrap wrap--wide">
+                <div class="section-head">
+                    <p class="u-kicker">Figures 6 to 8</p>
+                    <h2 class="section-title">Diagnose, Higgs, repair</h2>
+                    <p class="section-sub">The paper's three worked examples. In each, the largest of the 729 saliency components lies on the defect, and Higgsing its chiral field gives a consistent tiling whose toric diagram has the same corners. Open one in the laboratory to reproduce its published saliency map; <em>Remove this edge</em> then draws the map after the repair on the same scale, as the paper shows it for Figures 7 and 8.</p>
+                </div>
+                <div class="grid grid--3" id="examples-grid" data-results-host><p class="r-status">Loading the examples&hellip;</p></div>
+            </div>
+        </section>
+        <section class="section section--tight" id="provenance">
+            <div class="wrap">
+                <div class="section-head">
+                    <p class="u-kicker">Provenance</p>
+                    <h2 class="section-title">Where these numbers come from</h2>
+                </div>
+                <div class="prose">
+                    <p>Every number in the results sections is read from <code>model/results.json</code>, which <code>tools/export_results.py</code> writes from two sources. The classification and localisation results come from a fresh evaluation of the manuscript checkpoint by the companion code, the Python code that accompanies the paper: inference on all <span data-r="dataset.total|int">262,144</span> tilings and saliency gradients for all <span data-r="dataset.one_edge_fixable|int">7,236</span> 1-edge-fixable ones, with no cached predictions. That evaluation passes <span data-r="source.verification.passed|int">501</span> of the verifier's <span data-r="source.verification.checks|int">501</span> numerical and geometric checks against the companion code's reference values, among them Tables I and II of the paper. The training curves are the history recorded while the checkpoint was trained, read as it was saved. The laboratory runs the same network in the browser, and its test suite matches the Python saliency to about 10<sup>&minus;7</sup> of the peak.</p>
+                </div>
+                <details class="detk">
+                    <summary>Checksums and commands</summary>
+                    <div id="provenance-list" data-results-host></div>
+                    <pre># in the companion code's top folder
+python evaluate.py --device cpu
+python verify.py --results outputs/paper
+python /path/to/website/tools/export_results.py outputs/paper /path/to/website/model/results.json</pre>
+                </details>
+            </div>
+        </section>
+        </main>
+        <section class="section section--tight section--deep">
+            <div class="wrap">
+                <div class="section-head section-head--center">
+                    <p class="u-kicker u-kicker--light">Elsewhere</p>
+                    <h2 class="section-title">Profiles and Repositories</h2>
+                </div>
+                <div class="profile-links">
+                    <a class="profile-link" href="https://arxiv.org/search/?searchtype=author&amp;query=Seong%2C+R" target="_blank" rel="noopener"> <span class="profile-link__name"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M6 2h7l5 5v15H6V2zm7 1.5V8h4.5L13 3.5zM8 12h8v1.5H8V12zm0 3.5h8V17H8v-1.5z"></path>
+                            </svg>arXiv</span> <span class="profile-link__meta">Pre-prints by Rak-Kyeong Seong</span> </a>
+                    <a class="profile-link" href="https://scholar.google.com/citations?user=tMGHRVoAAAAJ&amp;hl=en&amp;oi=ao" target="_blank" rel="noopener"> <span class="profile-link__name"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M12 3 1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"></path>
+                            </svg>Google Scholar</span> <span class="profile-link__meta">Citations and h-index</span> </a>
+                    <a class="profile-link" href="https://inspirehep.net/authors/1069262" target="_blank" rel="noopener"> <span class="profile-link__name"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M4 3h11a3 3 0 0 1 3 3v15H7a3 3 0 0 1-3-3V3zm2 2v13a1 1 0 0 0 1 1h9V6a1 1 0 0 0-1-1H6zm2 3h7v1.5H8V8zm0 3.5h7V13H8v-1.5z"></path>
+                            </svg>iNSPIRE-HEP</span> <span class="profile-link__meta">High-energy physics literature</span> </a>
+                    <a class="profile-link" href="https://mathscinet.ams.org/mathscinet/MRAuthorID/910059" target="_blank" rel="noopener"> <span class="profile-link__name"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M4 3h11a3 3 0 0 1 3 3v15H7a3 3 0 0 1-3-3V3zm2 2v13a1 1 0 0 0 1 1h9V6a1 1 0 0 0-1-1H6zm2 3h7v1.5H8V8zm0 3.5h7V13H8v-1.5z"></path>
+                            </svg>AMS MathSciNet</span> <span class="profile-link__meta">Mathematical reviews</span> </a>
+                    <a class="profile-link" href="https://www.linkedin.com/in/rak-kyeong-seong-16502268/" target="_blank" rel="noopener"> <span class="profile-link__name"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M6.94 5a2 2 0 1 1-4-.002 2 2 0 0 1 4 .002zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91l.04-1.68z"></path>
+                            </svg>LinkedIn</span> <span class="profile-link__meta">rak-kyeong-seong</span> </a>
+                    <a class="profile-link" href="https://twitter.com/rak_seong" target="_blank" rel="noopener"> <span class="profile-link__name"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M22.162 5.656a8.384 8.384 0 0 1-2.402.658A4.196 4.196 0 0 0 21.6 4c-.82.488-1.719.83-2.656 1.015a4.182 4.182 0 0 0-7.126 3.814 11.874 11.874 0 0 1-8.62-4.37 4.168 4.168 0 0 0-.566 2.103c0 1.45.738 2.731 1.86 3.481a4.168 4.168 0 0 1-1.894-.523v.052a4.185 4.185 0 0 0 3.355 4.101 4.21 4.21 0 0 1-1.89.072A4.185 4.185 0 0 0 7.97 16.65a8.394 8.394 0 0 1-6.191 1.732 11.83 11.83 0 0 0 6.41 1.88c7.693 0 11.9-6.373 11.9-11.9 0-.18-.005-.362-.013-.54a8.496 8.496 0 0 0 2.087-2.165z"></path>
+                            </svg>Twitter / X</span> <span class="profile-link__meta">@rak_seong</span> </a>
+                    <a class="profile-link" href="https://www.youtube.com/@rakkyeongseong" target="_blank" rel="noopener"> <span class="profile-link__name"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M21.543 6.498C22 8.28 22 12 22 12s0 3.72-.457 5.502c-.254.985-.997 1.76-1.938 2.022C17.896 20 12 20 12 20s-5.893 0-7.605-.476c-.945-.266-1.687-1.04-1.938-2.022C2 15.72 2 12 2 12s0-3.72.457-5.502c.254-.985.997-1.76 1.938-2.022C6.107 4 12 4 12 4s5.896 0 7.605.476c.945.266 1.687 1.04 1.938 2.022zM10 15.5l6-3.5-6-3.5v7z"></path>
+                            </svg>YouTube</span> <span class="profile-link__meta">@rakkyeongseong</span> </a>
+                    <a class="profile-link" href="https://math.unist.ac.kr/faculty/" target="_blank" rel="noopener"> <span class="profile-link__name"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M10.6 13.4a1 1 0 0 1 0-1.4l1.4-1.4a3 3 0 1 0-4.2-4.2L6.3 7.8a1 1 0 0 1-1.4-1.4l1.5-1.5a5 5 0 0 1 7.1 7.1l-1.5 1.4a1 1 0 0 1-1.4 0zm2.8-2.8a1 1 0 0 1 0 1.4L12 13.4a3 3 0 1 0 4.2 4.2l1.5-1.4a1 1 0 0 1 1.4 1.4l-1.5 1.5a5 5 0 0 1-7.1-7.1l1.5-1.4a1 1 0 0 1 1.4 0z"></path>
+                            </svg>Faculty page</span> <span class="profile-link__meta">math.unist.ac.kr/faculty</span> </a>
+                </div>
+            </div>
+        </section>
+        <footer class="site-footer">
+            <div class="wrap">
+                <div class="footer-grid">
+                    <div>
+                        <img class="footer-logo" src="group_logo_0.png" width="2554" height="441" alt="Rak-Kyeong Seong Research Group">
+                        <p class="mb-3">Mathematical physics, quantum fields and machine learning at the Department of Mathematical Sciences, UNIST.</p>
+                        <div class="footer-social">
+                            <a href="https://twitter.com/rak_seong" aria-label="Twitter / X" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true">
+                                    <path d="M22.162 5.656a8.384 8.384 0 0 1-2.402.658A4.196 4.196 0 0 0 21.6 4c-.82.488-1.719.83-2.656 1.015a4.182 4.182 0 0 0-7.126 3.814 11.874 11.874 0 0 1-8.62-4.37 4.168 4.168 0 0 0-.566 2.103c0 1.45.738 2.731 1.86 3.481a4.168 4.168 0 0 1-1.894-.523v.052a4.185 4.185 0 0 0 3.355 4.101 4.21 4.21 0 0 1-1.89.072A4.185 4.185 0 0 0 7.97 16.65a8.394 8.394 0 0 1-6.191 1.732 11.83 11.83 0 0 0 6.41 1.88c7.693 0 11.9-6.373 11.9-11.9 0-.18-.005-.362-.013-.54a8.496 8.496 0 0 0 2.087-2.165z"/>
+                                </svg></a>
+                            <a href="https://www.linkedin.com/in/rak-kyeong-seong-16502268/" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true">
+                                    <path d="M6.94 5a2 2 0 1 1-4-.002 2 2 0 0 1 4 .002zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91l.04-1.68z"/>
+                                </svg></a>
+                            <a href="https://www.youtube.com/@rakkyeongseong" aria-label="YouTube" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true">
+                                    <path d="M21.543 6.498C22 8.28 22 12 22 12s0 3.72-.457 5.502c-.254.985-.997 1.76-1.938 2.022C17.896 20 12 20 12 20s-5.893 0-7.605-.476c-.945-.266-1.687-1.04-1.938-2.022C2 15.72 2 12 2 12s0-3.72.457-5.502c.254-.985.997-1.76 1.938-2.022C6.107 4 12 4 12 4s5.896 0 7.605.476c.945.266 1.687 1.04 1.938 2.022zM10 15.5l6-3.5-6-3.5v7z"/>
+                                </svg></a>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="footer-title">Contact</p>
+                        <p class="mb-3"><strong>Professor Rak-Kyeong Seong</strong><br>Department of Mathematical Sciences<br>Ulsan National Institute of Science and Technology</p>
+                        <p class="mb-0">50 UNIST-gil, Ulsan 44919<br>South Korea</p>
+                        <p class="mt-3 mb-0"><a href="mailto:seong@unist.ac.kr">seong@unist.ac.kr</a><br>+82 (0)52-217-2683<br><a href="https://math.unist.ac.kr/faculty/" target="_blank" rel="noopener">math.unist.ac.kr/faculty</a></p>
+                    </div>
+                    <div>
+                        <p class="footer-title">Navigate</p>
+                        <ul class="footer-list">
+                            <li><a href="https://rakkyeongseong.github.io/index.html">Home</a>
+                            </li>
+                            <li><a href="https://rakkyeongseong.github.io/pi.html">PI</a>
+                            </li>
+                            <li><a href="https://rakkyeongseong.github.io/team.html">Team</a>
+                            </li>
+                            <li><a href="https://rakkyeongseong.github.io/research.html">Research</a>
+                            </li>
+                            <li><a href="https://rakkyeongseong.github.io/publications.html">Publications</a>
+                            </li>
+                            <li><a href="https://rakkyeongseong.github.io/explorer.html">Explorer</a>
+                            </li>
+                            <li><a href="https://rakkyeongseong.github.io/news.html">News</a>
+                            </li>
+                            <li><a href="https://rakkyeongseong.github.io/events.html">Events</a>
+                            </li>
+                            <li><a href="https://rakkyeongseong.github.io/photos.html">Photos</a>
+                            </li>
+                            <li><a href="https://rakkyeongseong.github.io/join.html">Join</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <span>Copyright &copy; 2026 Rak-Kyeong Seong</span>
+                </div>
+            </div>
+        </footer>
+        <script src="assets/js/popper.min.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="site.js"></script>
+        <script src="js/brane.js"></script>
+        <script src="js/cnn.js"></script>
+        <script src="js/quiver.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/results.js"></script>
+    </body>
+</html>

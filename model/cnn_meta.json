@@ -1,0 +1,104 @@
+{
+ "layers": [
+  {
+   "name": "conv1_w",
+   "shape": [
+    32,
+    9,
+    3,
+    3
+   ],
+   "offset": 0,
+   "size": 2592
+  },
+  {
+   "name": "conv1_b",
+   "shape": [
+    32
+   ],
+   "offset": 2592,
+   "size": 32
+  },
+  {
+   "name": "conv2_w",
+   "shape": [
+    64,
+    32,
+    3,
+    3
+   ],
+   "offset": 2624,
+   "size": 18432
+  },
+  {
+   "name": "conv2_b",
+   "shape": [
+    64
+   ],
+   "offset": 21056,
+   "size": 64
+  },
+  {
+   "name": "conv3_w",
+   "shape": [
+    128,
+    64,
+    3,
+    3
+   ],
+   "offset": 21120,
+   "size": 73728
+  },
+  {
+   "name": "conv3_b",
+   "shape": [
+    128
+   ],
+   "offset": 94848,
+   "size": 128
+  },
+  {
+   "name": "fc1_w",
+   "shape": [
+    256,
+    10368
+   ],
+   "offset": 94976,
+   "size": 2654208
+  },
+  {
+   "name": "fc1_b",
+   "shape": [
+    256
+   ],
+   "offset": 2749184,
+   "size": 256
+  },
+  {
+   "name": "fc2_w",
+   "shape": [
+    1,
+    256
+   ],
+   "offset": 2749440,
+   "size": 256
+  },
+  {
+   "name": "fc2_b",
+   "shape": [
+    1
+   ],
+   "offset": 2749696,
+   "size": 1
+  }
+ ],
+ "threshold": 0.5,
+ "N": 3,
+ "dtype": "float32",
+ "epoch": 45,
+ "val_f1": 0.8794326241134752,
+ "input_encoding": "unsigned",
+ "diagonal_input": 1,
+ "source": "python_new/models/cnn_best.pt (manuscript revision arxiv_submission_3)",
+ "note": "BatchNorm folded into conv weights; 3x3 convs with circular padding 1; fc1 input is the C-order flatten of (128,9,9)."
+}
